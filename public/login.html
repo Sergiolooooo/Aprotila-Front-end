@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link href="../ima/aproColores.png" rel="icon">
+  <link href="../ima/aproColores.png" rel="apple-touch-icon">
+  <link rel="stylesheet" href="../css/login.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../css/popup.css">
+</head>
+
+
+<body>
+  <section>
+    <div class="container py-5 ">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-11 col-md-8 col-lg-6 col-xl-5">
+          <div class="card text-dark " style="border-radius: 1rem; height: 38rem;">
+            <div class="card-body pt-0 ps-5 pe-5  text-center">
+
+              <div class="mb-md-5 mt-md-3">
+
+                  <div class="card-body circular-landscape align-items-center">
+                    <img class="mx-auto d-block" src="../ima/aproColores.png" style="height: 100px; width: 150px;" alt="logo">
+                  </div>
+
+                <!-- <hr class="linea"> -->
+                <h2 class="fw-bold mb-3 text-uppercase">Bienvenido</h2>
+                <hr class="linea  mt-2 mb-3">
+                <p class="text-dark-50 mb-5">Por favor ingrese su Cedula y Contraseña!</p>
+
+                <form id="login-form" action="http://localhost:8082/API/auth/login" method="POST">
+
+                  <div class="input-group flex-nowrap mb-4">
+                    <span class="spn-zize spn-1 rounded-start">
+                      <i class="bi bi-person-vcard i-sty"></i>
+                    </span>
+                    <div class="form-floating  ">
+                      <input type="text" class="form-control bg-dark-subtle border-start-0 rounded-end border-dark"
+                        id="identification" name="identification" placeholder="Cedula" required>
+                      <label for="identification">Cedula</label>
+                    </div>
+                  </div>
+
+                  <div class="input-group flex-nowrap  mb-5">
+                    <span class="spn-zize spn-2 rounded-start">
+                      <i class="bi bi-building-lock i-sty"></i>
+                    </span>
+                    <!-- ... (Código anterior) ... -->
+                    <div class="form-floating position-relative">
+                      <input type="password" id="password" name="password"
+                        class="form-control bg-dark-subtle border-start-0 rounded-end border-dark"
+                        placeholder="Contraseña" required>
+                      <label for="password">Contraseña</label>
+                      <!-- Agrega el ojito para ocultar/mostrar la contraseña -->
+                      <span class="password-toggle bi bi-eye-slash position-absolute end-0 top-50 translate-middle-y"
+                        onclick="togglePasswordVisibility()"></span>
+                    </div>
+                    <!-- ... (Código posterior) ... -->
+
+                  </div>
+
+                  <input class="btn btn-primary col-12 " type="submit" value="Iniciar sesión">
+
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="popup" id="popup" style="top: 45%;">
+      <img id="popup-img" src="">
+      <p style="color: white; margin-top: 10%;" id="alerta"></p>
+      <button type="button" onclick="closePopup()">OK</button>
+    </div>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <script src="../js/popup.js"></script>
+  <script>
+    // Variable para controlar si la contraseña está oculta o visible
+    let passwordVisible = false;
+
+    // Función para cambiar el tipo de entrada del campo de contraseña
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById("password");
+      const passwordToggle = document.querySelector(".password-toggle");
+
+      passwordVisible = !passwordVisible;
+
+      if (passwordVisible) {
+        passwordInput.type = "text";
+        passwordToggle.classList.remove("bi-eye-slash");
+        passwordToggle.classList.add("bi-eye");
+      } else {
+        passwordInput.type = "password";
+        passwordToggle.classList.remove("bi-eye");
+        passwordToggle.classList.add("bi-eye-slash");
+      }
+    }
+
+  </script>
+
+  <script>
+    const Form = document.getElementById("login-form");
+    // Agrega un evento "submit" al formulario y define una función de callback que se ejecutará cuando se envíe el formulario
+    Form.addEventListener("submit", async (event) => {
+      // Evita el comportamiento predeterminado de enviar el formulario
+      event.preventDefault();
+      // Obtiene los valores de correo electrónico y contraseña del formulario y los asigna a las constantes "email" y "password"
+      const consultIdent = document.getElementById('identification').value;
+      const consultPassword = document.getElementById('password').value;
+      // Envía una solicitud POST a la API con los datos del formulario
+      const response = await fetch("http://localhost:8082/API/auth/login", {
+        method: "POST", // Especifica el método HTTP de la solicitud como "POST"
+        headers: {
+          "Content-Type": "application/json",
+
+          // Especifica que los datos se enviarán en formato JSON
+        },
+        body: JSON.stringify({
+          identification: consultIdent,
+          password: consultPassword
+
+        }), // Convierte el objeto "data" en formato JSON y lo envía en el cuerpo de la solicitud
+      });
+      // Convierte la respuesta en formato JSON
+      const json = await response.json();
+      // Registra la respuesta JSON devuelta por el servidor, así como los valores de correo electrónico y contraseña en la consola de JavaScript
+      console.log(json);
+      console.log(identification);
+      console.log(password);
+
+      // Hacer algo con la respuesta del servidor
+    });
+  </script>
+
+  <script>
+    // Obtiene el formulario HTML con el ID "login-form" y lo asigna a una constante llamada "form"
+    const form = document.getElementById("login-form");
+    // Obtiene el elemento HTML con el ID "status" y lo asigna a una constante llamada "status"
+    const status = document.getElementById("status");
+    // Agrega un evento "submit" al formulario y define una función de callback que se ejecutará cuando se envíe el formulario
+    form.addEventListener("submit", async (event) => {
+      // Evita el comportamiento predeterminado de enviar el formulario
+      event.preventDefault();
+      const consultDni = document.getElementById('identification').value;
+      const consultPassword = document.getElementById('password').value;
+
+      const response = await fetch("http://localhost:8082/API/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "authenticate": localStorage.getItem("authenticate")
+        },
+        body: JSON.stringify({
+          identification: consultDni,
+          password: consultPassword
+        }
+        ),
+      });
+
+      const json = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem("authenticate", json.token);
+        localStorage.setItem("rol", json.rol);
+        localStorage.setItem("rol", json.name);
+        form.reset();
+        window.location.assign("./PANELDECONTROLD.html");
+      } else {
+        let mensaje = 'Cedula o contraseña invalidados';
+        errors(mensaje);
+      }
+
+    });
+  </script>
+
+
+</body>
+
+</html>

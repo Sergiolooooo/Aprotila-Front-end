@@ -1,0 +1,120 @@
+/*html{
+    height: auto;
+    min-height: 100%;
+}*/
+body{
+  /*  background: linear-gradient(to rigth,#f72585, #3a0ca3);*/
+  /* background: linear-gradient(145deg,#f72585, #3a0ca3); Este se hace con grados*/
+  /* background: radial-gradient(circle, #0d47a1, #64b4f5); se genera del centro al exterior*/
+  /*background: linear-gradient(#24404d, #6dbff1, black) no-repeat;*/
+}   
+
+h1{
+    text-align: center;
+    text-shadow: 2px 2px 2px rgb(188, 234, 249);
+    color: brown;
+}
+
+div.contenedor{
+    width: 90%;
+    height: 225px;
+    margin: auto;
+    border: 3px outset black;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 2px 2px 2px 2px grey;
+ color: blue;
+ border-radius: 15px;
+}
+
+.cabecero{
+        display: flex;
+        justify-content: center;
+        align-items: center;    
+}
+
+
+div.cuerpo{
+    padding-top: 2px;
+    font-size: 1.2em;
+    font-weight: bolder;
+    text-shadow: 2px 5px 6px grey;
+}
+
+img{
+width: 200px;
+height: 150px
+}
+
+
+.icon-text-container {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    text-align: center;
+    border: 3px outset black;
+    text-align: center;
+    box-shadow: 2px 2px 2px 2px grey;
+ border-radius: 15px;
+  }
+  
+  .icon-text-container i {
+    margin-bottom: 10px;
+  }
+
+  .contenedor {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  @media (max-width: 767px) {
+    .contenedor {
+      background-color: transparent;
+      border-color: transparent;
+      box-shadow: none;
+      color: inherit;
+      border-radius: 0;
+    }
+  }
+  
+  footer{
+    background-color: #87CEEB;
+    margin-top: 186px;
+  }
+.enlace a{
+    text-decoration: none;
+}
+
+.custom-nav{
+    color: white;
+}
+
+.custom-nav .nav-link {
+    color: white !important;
+  }
+  .custom-nav .nav-link svg {
+    fill: white;
+  }
+
+  .icon-text-container a {
+    transition: transform 0.3s, background-color 0.3s; /* Agrega una transición suave a los cambios */
+  }
+  
+  .icon-text-container a:hover {
+    transform: translateY(-5px); /* Mueve el enlace hacia arriba */
+    background-color: #f8f41e; /* Cambia el color de fondo del enlace */
+  }
+  .customrow{
+
+    display: flex;
+    justify-content: space-around;
+    column-gap: 2rem;
+    row-gap: 2rem;
+  }
+
+
+  
+  

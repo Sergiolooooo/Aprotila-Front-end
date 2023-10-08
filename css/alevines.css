@@ -1,0 +1,57 @@
+.gradient-custom {
+  background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+}
+
+.bg-imagen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.bg-imagen #imagen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+body {
+  background-image: url(../ima/bgLoginEd.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.i-sty {
+  font-size: 2rem;
+  color: #000;
+}
+
+.g-sty {
+  font-size: 2rem;
+  color: #000;
+  margin-top: 10px;
+}
+
+.spn-zize {
+  width: 3rem;
+  padding-top: 0.2rem;
+  border: solid 1px #000;
+  background-color: #b6b5b5;
+}
+
+.spn-1 {
+  height: 3.6rem;
+}
+
+.spn-2 {
+  height: 3.65rem;
+}
+
+.linea {
+  color: #0452b1;
+  border: solid 2px;
+}

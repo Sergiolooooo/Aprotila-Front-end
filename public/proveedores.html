@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proveedor</title>
+    <link href="../ima/aproColores.png" rel="icon">
+    <link href="../ima/aproColores.png" rel="apple-touch-icon">
+    <link rel="stylesheet" href="../css/container.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../datatables/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="../datatables/DataTables-1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="../css/popup.css">
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="logo">
+            <img src="../ima/aproColores.png" alt="Logo Image">
+          </div>
+      <button class="nav-toggle" aria-label="Abrir menú">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-menu">
+        <li class="nav-menu-item">
+          <a href="PANELDECONTROLD.html" class="nav-menu-link1 nav-link1"> <i class="uil uil-estate"></i>PANEL DE CONTROL</a>
+        </li>
+        <li class="nav-menu-item">
+          <a href="#" class="nav-menu-link1 nav-link1 toggle-mode"> <i class="uil uil-moon"></i>MODO OSCURO</a>
+        </li>
+        <li class="nav-menu-item">
+          <a href="#" onclick="CerrarSesion()" class="nav-menu-link1 nav-link1 toggle-mode"> <i class="uil uil-signout"></i>CERRAR SESIÓN</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="container-custom" style="margin-top: 10rem;">
+        <header style="text-align: center;">Proveedores</header>
+
+        <form id="entryprovider_form" name="entryprovider_form">
+            <div class="form first">
+                <div class="details personal">
+
+                    <div class="fields">
+
+                        <div class="input-field">
+                            <label for="typeProvider">Tipo Proveedor</label>
+                            <input type="text" id="typeProvider" name="typeProvider" placeholder="Tipo" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="nameProvider">Nombre Proveedor</label>
+                            <input type="text" id="nameProvider" name="nameProvider" placeholder="Empresa" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="direccion">Direccion</label>
+                            <input type="text" id="direccion" name="direccion" placeholder="" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="typeProvider">Provincia</label>
+                            <select id="provincia" name="provincia" onchange="habilitarCantones()" required>
+                                <option value="" disabled selected>Elija una provincia</option>
+                                <option value="San José">San José</option>
+                                <option value="Alajuela">Alajuela</option>
+                                <option value="Cartago">Cartago</option>
+                                <option value="Heredia">Heredia</option>
+                                <option value="Guanacaste">Guanacaste</option>
+                                <option value="Puntarenas">Puntarenas</option>
+                                <option value="Limón">Limón</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="typeProvider">Cantón</label>
+                            <select id="canton" name="canton" onchange="habilitarDistritos()" disabled required>
+                                <option value="" disabled selected>Elija un cantón</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label for="typeProvider">Distrito</label>
+                            <select id="distrito" name="distrito" required>
+                                <option value="" disabled selected>Elija un distrito</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="fullName">Nombre Contacto</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="typeIdentification">Tipo de Cedula</label>
+                            <select class="formulario__campo" id="typeIdentification" name="typeIdentification"
+                                required>
+                                <option value="" disabled selected>Seleccione el tipo de Cedula</option>
+                                <option>Juridico</option>
+                                <option>Fisica</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="identification">Cedula</label>
+                            <input type="text" id="identification" name="identification" placeholder="Cedula" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="telephone">Telefono</label>
+                            <input type="text" id="telephone" name="telephone" placeholder="22222222" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="ejemplo@email.com" required>
+                        </div>
+
+                        <div class="input-field">
+                            <button type="submit" class="btn nextBtn">Registrar</button>
+                            <!-- onclick="openPopup()" -->
+                            <div class="popup" id="popup">
+                                <img id="popup-img" src="">
+                                <p style="color: white; margin-top: 10%;" id="alerta"></p>
+                                <button style="margin-left: 20%;" type="button" onclick="closePopup()">OK</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+
+
+
+
+    <div class="contenedor2">
+        <table id="example" class="table" style="width: 100%;">
+            <thead>
+                <th style="background-color: #0d6efd; color: white;width: 100px;">Tipo Proveeedor</th>
+                <th style="background-color: #0d6efd; color: white;width: 100px;">Nombre Proveedor</th>
+                <th style="background-color: #0d6efd; color: white;">Direccion</th>
+                <th style="background-color: #0d6efd; color: white;">Provincia</th>
+                <th style="background-color: #0d6efd; color: white;">Canton</th>
+                <th style="background-color: #0d6efd; color: white;">Distrito</th>
+                <th style="background-color: #0d6efd; color: white;">Contacto</th>
+                <th style="background-color: #0d6efd; color: white;">Tipo Cedula</th>
+                <th style="background-color: #0d6efd; color: white;">Cedula</th>
+                <th style="background-color: #0d6efd; color: white;">Telefono</th>
+                <th style="background-color: #0d6efd; color: white;">Email</th>
+                <th style="background-color: #0d6efd; color: white;">Acciones</th>
+            </thead>
+            <tbody data-table>
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- Modal para Editar   -->
+    <div id="modalProveedor" class="modal fade" tabindex="-1" aria-labelledby="modalProveedor" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Información</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="frmActualizarProvider">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="provider" class="col-form-label">Proveedor:</label>
+                            <input id="typeProvider_editar" name="typeProvider_editar" type="text" class="form-control"
+                                value="">
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="nameProvider" class="col-form-label">Nombre Proveedor</label>
+                            <input id="nameProvider_editar" name="nameProvider_editar" type="text" class="form-control"
+                                value="">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="direccion" class="col-form-label">Direccion</label>
+                            <input id="direccion_editar" name="direccion_editar" type="text" class="form-control"
+                                value="">
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="provincia" class="col-form-label">Provincia</label>
+                            <select id="provincia_editar" name="provincia_editar" onchange="habilitarCantonesEditar()">
+                                <option value="" disabled selected>Elija una provincia</option>
+                                <option value="San José">San José</option>
+                                <option value="Alajuela">Alajuela</option>
+                                <option value="Cartago">Cartago</option>
+                                <option value="Heredia">Heredia</option>
+                                <option value="Guanacaste">Guanacaste</option>
+                                <option value="Puntarenas">Puntarenas</option>
+                                <option value="Limón">Limón</option>
+                            </select>
+
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="canton" class="col-form-label">Cantón</label>
+                            <select id="canton_editar" name="canton_editar" onchange="habilitarDistritosEditar()">
+                                <option value="" disabled selected>Elija un cantón</option>
+                            </select>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="distrito" class="col-form-label">Distrito</label>
+                            <select id="distrito_editar" name="distrito_editar" disabled>
+                                <option value="" disabled selected>Elija un distrito</option>
+                            </select>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="fullName" class="col-form-label">Nombre Contacto</label>
+                            <input id="fullName_editar" name="fullName_editar" type="text" class="form-control"
+                                value="">
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="typeIdentification" class="col-form-label">Tipo de Cedula</label>
+                            <select id="typeIdentification_editar" name="typeIdentification_editar">
+                                <option value="" disabled selected>Seleccione el tipo de Cedula</option>
+                                <option>Juridica</option>
+                                <option>Fisica</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="identification" class="col-form-label">Cedula</label>
+                            <input id="identification_editar" name="identification_editar" type="text"
+                                class="form-control" value="">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="telephone" class="col-form-label">Telefono</label>
+                            <input id="telephone_editar" name="telephone_editar" type="number" class="form-control"
+                                value="">
+                        </div>
+
+                        <div>
+                            <label for="email" class="col-form-label">Email</label>
+                            <input id="email_editar" name="email_editar" type="text" class="form-control" value="">
+                        </div>
+
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    <script src="../js/autenticacion.js"></script>
+    <script src="../JQuery/code.jquery.com_jquery-3.7.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"
+        integrity="sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../datatables/datatables.min.js"></script>
+
+    <script src="../datatables/Buttons-2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="../datatables/JSZip-2.5.0/jszip.min.js"></script>
+    <script src="../datatables/pdfmake-0.2.7/pdfmake.min.js"></script>
+    <script src="../datatables/pdfmake-0.2.7/vfs_fonts.js"></script>
+    <script src="../datatables/Buttons-2.3.6/js/buttons.html5.min.js"></script>
+    <script src="../js/selectDistritos.js"></script>
+    <script src="../js/selectDistritosEditar.js"></script>
+    <script src="../js/actualizarProvider.js"></script>
+    <script type="text/JavaScript" src="../js/autenticacion.js"></script>
+    <script src="../js/popup.js"></script>
+    <script>
+        const toggleModeButton = document.querySelector('.toggle-mode');
+        const body = document.querySelector('body');
+
+        toggleModeButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+        });
+    </script>
+
+    <script>
+        const navToggle = document.querySelector(".nav-toggle");
+        const navMenu = document.querySelector(".nav-menu");
+
+        navToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("nav-menu_visible");
+
+            if (navMenu.classList.contains("nav-menu_visible")) {
+                navToggle.setAttribute("aria-label", "Cerrar menú");
+            } else {
+                navToggle.setAttribute("aria-label", "Abrir menú");
+            }
+        });
+    </script>
+
+
+    <script>
+
+        const listaProvider = () =>
+            fetch('http://localhost:8082/API/provider', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authenticate': localStorage.getItem("authenticate"),
+                }
+            }).then((respuesta) => respuesta.json());
+
+        listaProvider().then((data) => {
+            console.log(data);
+            let provider = data.provider;
+            if (provider) {
+                provider.forEach(provider => {
+                    const nuevaLinea = crearNuevaLinea(provider._id, provider.typeProvider, provider.nameProvider, provider.direccion, provider.provincia, provider.canton, provider.distrito, provider.fullName, provider.typeIdentification, provider.identification, provider.telephone, provider.email);
+                    table.appendChild(nuevaLinea);
+                });
+
+                // Aquí va el código de inicialización del DataTable y configuración de botones
+                $('#example').DataTable({
+                    "autoWidth": true,
+                    "scrollX": true,
+                    "language": {
+                        "lengthMenu": "Mostrar _MENU_ registros por página",
+                        "zeroRecords": "No se encontraron resultados",
+                        "info": "Mostrando página _PAGE_ de _PAGES_",
+                        "infoEmpty": "No hay registros disponibles",
+                        "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                        "search": "Buscar:",
+                        "paginate": {
+                            "first": "Primero",
+                            "last": "Ultimo",
+                            "next": "Siguiente",
+                            "previous": "Anterior"
+                        },
+                        "buttons": {
+                            "excel": "Exportar a Excel",
+                            "pdf": "Exportar a PDF",
+                            "print": "Imprimir"
+                        }
+                    },
+                    "dom": 'lBfrtip',
+                    "buttons": [
+                        'excel', 'pdf', 'print'
+                    ],
+                    "responsive": true
+                });
+            } else {
+                console.error("La propiedad 'entryprovider' es undefined en el objeto 'data'");
+            }
+        }).catch((error) => {
+            console.error(error);
+            errors("Ocurrió un error");
+        });
+
+
+        const crearNuevaLinea = (id, typeProvider, nameProvider, direccion, provincia, canton, distrito, fullName, typeIdentification, identification, telephone, email) => {
+            const linea = document.createElement("tr");
+            linea.setAttribute("id", id);
+            const contenido = `
+                      <td>${typeProvider}</td>
+                      <td>${nameProvider}</td>
+                      <td>${direccion}</td>
+                      <td>${provincia}</td>
+                      <td>${canton}</td>
+                      <td>${distrito}</td>
+                      <td>${fullName}</td>
+                      <td>${typeIdentification}</td>
+                      <td>${identification}</td>
+                      <td>${telephone}</td>
+                      <td>${email}</td>
+
+                      <td>
+      
+                        <button class="btn btn-outline-danger bi bi-trash" id="${id}"></a>
+                        <button class="btnEditar btn btn-outline-primary bi bi-pencil" id="${id}"></a>
+                     
+                      </td>`;
+            linea.innerHTML = contenido;
+            const btn = linea.querySelector("button");
+            btn.addEventListener('click', () => {
+                const id = btn.id;
+                console.log(id);
+                eliminarEntry(id);
+            });
+            return linea;
+        }
+
+        const table = document.querySelector("[data-table]");
+
+        const eliminarEntry = (id) => {
+            fetch(`http://localhost:8082/API/provider/${id}`, {
+                method: "DELETE",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authenticate': localStorage.getItem("authenticate"),
+                }
+            })
+                .then(respuesta => {
+                    // window.location.reload();
+                    console.log(respuesta);
+                    warning("Usuario No autorizado");
+                })
+                .catch((error) => errors("Ocurrió un error"));
+        }
+    </script>
+
+    <script>
+
+        const entryproviderForm = document.getElementById('entryprovider_form');
+        // Obtener el elemento HTML del formulario de citas por ults-fosu ID y almacenarlo en la constante appointmentForm
+        entryproviderForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const providerTypeProvider = document.getElementById('typeProvider').value;
+            const providerNameProvider = document.getElementById('nameProvider').value;
+            const providerDireccion = document.getElementById('direccion').value;
+            const providerProvincia = document.getElementById('provincia').value;
+            const providerCanton = document.getElementById('canton').value;
+            const providerDistrito = document.getElementById('distrito').value;
+            const providerFullName = document.getElementById('fullName').value;
+            const providerTypeIdentification = document.getElementById('typeIdentification').value;
+            const providerIdentification = document.getElementById('identification').value;
+            const providerTelephone = document.getElementById('telephone').value;
+            const providerEmail = document.getElementById('email').value;
+
+
+            const response = await fetch(`http://localhost:8082/API/provider`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authenticate': localStorage.getItem("authenticate"),
+                },
+                body: JSON.stringify({
+                    typeProvider: providerTypeProvider,
+                    nameProvider: providerNameProvider,
+                    direccion: providerDireccion,
+                    provincia: providerProvincia,
+                    canton: providerCanton,
+                    distrito: providerDistrito,
+                    fullName: providerFullName,
+                    typeIdentification: providerTypeIdentification,
+                    identification: providerIdentification,
+                    telephone: providerTelephone,
+                    email: providerEmail
+                })
+            });
+            const responseData = await response.json();
+            // Analizar la respuesta de la API y almacenarla en la variable responseData
+
+            if (responseData.ok === false) {
+                errors('Ocurrió un error al agregar la consulta: ' + json.msg);
+            }
+            if (responseData.ok === 200) {
+                pick("Agregado correctamente");
+                // location.reload();
+            }
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso Alevines</title>
+
+    <link rel="stylesheet" href="../css/container.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../datatables/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="../datatables/DataTables-1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="../css/popup.css">
+</head>
+
+<body>
+
+    <nav class="nav">
+        <div class="logo">
+            <img src="../ima/aproColores.png" alt="Logo Image">
+        </div>
+        <button class="nav-toggle" aria-label="Abrir menú">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-menu">
+            <li class="nav-menu-item">
+                <a href="PANELDECONTROLD.html" class="nav-menu-link1 nav-link1"> <i class="uil uil-estate"></i>PANEL DE
+                    CONTROL</a>
+            </li>
+            <li class="nav-menu-item">
+                <a href="#" class="nav-menu-link1 nav-link1 toggle-mode"> <i class="uil uil-moon"></i>MODO OSCURO</a>
+            </li>
+            <li class="nav-menu-item">
+                <a href="#" onclick="CerrarSesion()" class="nav-menu-link1 nav-link1 toggle-mode">
+                    <i class="uil uil-signout"></i>CERRAR SESIÓN</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <div class="container-custom" style="margin-top: 10rem;">
+        <header style="text-align: center;">Ingreso de Alevines</header>
+
+        <form id="entryalevines_form">
+            <div class="form first">
+                <div class="details personal">
+
+                    <div class="fields">
+
+                        <div class="input-field">
+                            <label for="date">Fecha de Ingreso</label>
+                            <input type="datetime-local" id="date" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="provider">Proveedor</label>
+                            <select id="provider" name="provider" class="formulario__campo" required>
+                                <option value="" disabled selected>Seleccione el tipo de Proveedor</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="loteProvider">Lote de Proveedor</label>
+                            <input type="text" id="loteProvider" placeholder="tp-3333" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="pilaProvider">Pila de Proveedor</label>
+                            <input type="text" id="pilaProvider" placeholder="15" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="employee">Encargado</label>
+                            <input type="text" id="employee" placeholder="202220222" required disabled>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="numPila">Pila de ingreso</label>
+                            <select class="formulario__campo" id="numPila" required>
+                                <option value="" disabled selected>--Seleccione la pila--</option>
+
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="batch">Lote</label>
+                            <input type="text" id="batch" placeholder="ap-1" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="typeFish">Especie de tilapia</label>
+                            <input type="text" id="typeFish" placeholder="Especie" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="cantidad">Cantidad</label>
+                            <input type="number" id="cantidad" placeholder="8000" required min="1">
+                        </div>
+
+                        <div class="input-field">
+                            <button type="submit" class="btn nextBtn">Registrar</button>
+                            <div class="popup" id="popup">
+                                <img id="popup-img" src="">
+                                <p style="color: white; margin-top: 10%;" id="alerta"></p>
+                                <button style="margin-left: 21%;" type="button" onclick="closePopup()">OK</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+
+
+    <!--Ejemplo tabla con DataTables-->
+    <!-- Tabla Alumnos  -->
+    <div class="container my-5">
+        <div class="row">
+            <table id="example" class="table table-striped table-bordered " cellspacing="0" width="100%"
+                style="margin: 0 auto;">
+                <thead>
+                    <th style="background-color: #0d6efd; color: white;">Fecha Ingreso</th>
+                    <th style="background-color: #0d6efd; color: white;">Proveedor</th>
+                    <th style="background-color: #0d6efd; color: white;">Lote Proveedor</th>
+                    <th style="background-color: #0d6efd; color: white;">Pila Proveedor</th>
+                    <th style="background-color: #0d6efd; color: white;">Encargado</th>
+                    <th style="background-color: #0d6efd; color: white;">Pila Ingreso</th>
+                    <th style="background-color: #0d6efd; color: white;">Lote Ingreso</th>
+                    <th style="background-color: #0d6efd; color: white;">Especie</th>
+                    <th style="background-color: #0d6efd; color: white;">Cantidad</th>
+                    <th style="background-color: #0d6efd; color: white;">Acciones</th>
+                </thead>
+                <tbody data-table>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <!-- Modal para Editar   -->
+    <div id="modalAlumno" class="modal fade" tabindex="-1" aria-labelledby="modalAlumno" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Información</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="frmActualizarEntry">
+                    <div class="modal-body">
+
+                        <div class="mb-3">
+                            <label for="provider" class="col-form-label">Proveedor:</label>
+                            <select id="provider_editar" name="provider_editar" class="formulario__campo">
+                                <option value="" disabled selected>Seleccione el Proveedor</option>
+                            </select>
+                        </div>
+
+                                <div class="mb-3">
+                                    <label for="loteProvider" class="col-form-label">Lote Proveedor:</label>
+                                    <input id="loteProvider_editar" name="loteProvider_editar" type="text"
+                                        class="form-control" value="">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="pilaProvider" class="col-form-label">Pila Proveedor:</label>
+                                    <input id="pilaProvider_editar" name="pilaProvider_editar" type="text"
+                                        class="form-control" value="">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="numPila_editar" class="col-form-label">Pila local:</label>
+                                    <input id="numPila_editar" name="numPila_editar" type="number"
+                                        class="form-control" value="" disabled>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="batch" class="col-form-label">Lote Aprotila:</label>
+                                    <input id="batch_editar" name="batch_editar" type="text" class="form-control"
+                                        value="">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="typeFish" class="col-form-label">Especie:</label>
+                                    <input id="typeFish_editar" name="typeFish_editar" type="text" class="form-control"
+                                        value="">
+
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="cantidad" class="col-form-label">Cantidad:</label>
+                                    <input id="cantidad_editar" name="cantidad_editar" type="number"
+                                        class="form-control" min="1" value="">
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+            </div>
+
+        </div>
+
+        <script src="../JQuery/code.jquery.com_jquery-3.7.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"
+            integrity="sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="../bootstrap/js/bootstrap.min.js"></script>
+        <script src="../datatables/datatables.min.js"></script>
+    
+        <script src="../datatables/Buttons-2.3.6/js/dataTables.buttons.min.js"></script>
+        <script src="../datatables/JSZip-2.5.0/jszip.min.js"></script>
+        <script src="../datatables/pdfmake-0.2.7/pdfmake.min.js"></script>
+        <script src="../datatables/pdfmake-0.2.7/vfs_fonts.js"></script>
+        <script src="../datatables/Buttons-2.3.6/js/buttons.html5.min.js"></script>
+        <script src="../js/actualizarEntryAle.js"></script>
+        <script src="../js/optionProvider.js"></script>
+        <script src="../js/date.js"></script>
+        <script src="../js/entryPilaPeces.js"></script>
+        <script type="text/JavaScript" src="../js/autenticacion.js"></script>
+        <script src="../js/popup.js"></script>
+        
+        <script>
+            const navToggle = document.querySelector(".nav-toggle");
+            const navMenu = document.querySelector(".nav-menu");
+
+            navToggle.addEventListener("click", () => {
+                navMenu.classList.toggle("nav-menu_visible");
+
+                if (navMenu.classList.contains("nav-menu_visible")) {
+                    navToggle.setAttribute("aria-label", "Cerrar menú");
+                } else {
+                    navToggle.setAttribute("aria-label", "Abrir menú");
+                }
+            });
+        </script>
+
+<script>
+
+    const user = obtenerUsuario()
+    document.getElementById('employee').value = user.name
+    document.getElementById('employee').setAttribute('user_id', user._id)
+
+
+
+    const toggleModeButton = document.querySelector('.toggle-mode');
+    const body = document.querySelector('body');
+
+    toggleModeButton.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+    });
+</script>
+
+        <script>
+
+            const listaAlevines = () =>
+                fetch('http://localhost:8082/API/entryalevines', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'authenticate': localStorage.getItem("authenticate"),
+                    }
+                }).then((respuesta) => respuesta.json());
+
+                listaAlevines().then((data) => {
+                console.log(data.alevines);
+                let alevines = data.alevines;
+                    if (alevines.length !== 0 ) {
+
+                        alevines.forEach(alevin => {
+                                const nuevaLinea = crearNuevaLinea(alevin._id, alevin.date, alevin.provider, alevin.loteProvider, alevin.pilaProvider, alevin.employee_name, alevin.pilaEntry, alevin.batch, alevin.typeFish, alevin.cantidad);
+                                table.appendChild(nuevaLinea);
+                        });
+
+                        $('#example').DataTable({
+                            "autoWidth": true,
+                            "language": {
+                                "lengthMenu": "Mostrar _MENU_ registros por página",
+                                "zeroRecords": "No se encontraron resultados",
+                                "info": "Mostrando página _PAGE_ de _PAGES_",
+                                "infoEmpty": "No hay registros disponibles",
+                                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                                "search": "Buscar:",
+                                "paginate": {
+                                    "first": "Primero",
+                                    "last": "Último",
+                                    "next": "Siguiente",
+                                    "previous": "Anterior"
+                                },
+                                "buttons": {
+                                    "excel": "Exportar a Excel",
+                                    "pdf": "Exportar a PDF",
+                                    "print": "Imprimir"
+                                }
+                            },
+                            "dom": 'lBfrtip',
+                            "buttons": [
+                                'excel', 'pdf', 'print'
+                            ],
+                        });
+                    } else {
+                        console.error("La propiedad 'entryalevines' es undefined en el objeto 'data'");
+                    }
+      
+            }).catch((error) => {
+                console.error(error);
+                errors("Ocurrió un error al listar alevines");
+            });
+
+
+            const crearNuevaLinea = (id, date, provider, loteProvider, pilaProvider, employee, pilaEntry, batch, typeFish, cantidad) => {
+                const linea = document.createElement("tr");
+                linea.setAttribute("id", id); // Agregar el atributo "id" con el valor del ID
+
+                const contenido =
+                    `<td class="td" data-td>${date}</td>
+                        <td>${provider}</td>
+                        <td>${loteProvider}</td>
+                        <td>${pilaProvider}</td>
+                        <td>${employee}</td>
+                        <td>${pilaEntry}</td>
+                        <td>${batch}</td>
+                        <td>${typeFish}</td>
+                        <td>${cantidad}</td>
+                                    <td>
+
+                    <button class="btn btn-outline-danger bi bi-trash" id="${id}"></a>
+                    <button class="btnEditar btn btn-outline-primary bi bi-pencil"></a>
+
+                  </td>`;
+                linea.innerHTML = contenido;
+                const btn = linea.querySelector("button");
+                btn.addEventListener('click', () => {
+                    const id = btn.id;
+                    console.log(id);
+                    eliminarEntry(id);
+                });
+                return linea;
+            }
+
+            const table = document.querySelector("[data-table]");
+
+            const eliminarEntry = (id) => {
+                fetch(`http://localhost:8082/API/entryalevines/${id}`, {
+                    method: "DELETE",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'authenticate': localStorage.getItem("authenticate"),
+                    }
+                })
+                    .then(respuesta => {
+                        window.location.reload();
+                        console.log(respuesta);
+                    }).catch((error) => errors("Ocurrió un error"));
+            }
+
+        </script>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
+
+        <script>
+            const entryalevinesForm = document.getElementById('entryalevines_form');
+            // Obtener el elemento HTML del formulario de citas por ults-fosu ID y almacenarlo en la constante appointmentForm
+            entryalevinesForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+
+                const alevinDate = document.getElementById('date').value;
+                const alevinProvider = document.getElementById('provider').value;
+                const alevinLoteProvider = document.getElementById('loteProvider').value;
+                const alevinPilaProvider = document.getElementById('pilaProvider').value;
+                const alevinEmployee = document.getElementById('employee').value;
+                const batch = document.getElementById('batch').value;
+                const alevinPilaEntry = document.getElementById('numPila').value;
+                const alevinTypeFish = document.getElementById('typeFish').value;
+                const alevinCantidad = document.getElementById('cantidad').value;
+
+                //obtenmos los Id de la pila seleccionada
+                const selectElement = document.getElementById('numPila');
+                const selectedOption = selectElement.options[selectElement.selectedIndex];
+                const pila_id = selectedOption.getAttribute('pila_id');
+                const employee_id = document.getElementById('employee').getAttribute('user_id')
+
+
+
+                const registrarAlevines = async () => {
+                    try {
+                        const response = await fetch('http://localhost:8082/API/entryalevines', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'authenticate': localStorage.getItem("authenticate"),
+                            },
+                            body: JSON.stringify({
+                                date: alevinDate,
+                                provider: alevinProvider,
+                                loteProvider: alevinLoteProvider,
+                                batch: batch,
+                                pilaProvider: alevinPilaProvider,
+                                employee_id: employee_id,
+                                pilaEntry: alevinPilaEntry,
+                                typeFish: alevinTypeFish,
+                                cantidad: alevinCantidad
+                            })
+                        });
+                        const responseData = await response.json();
+                        // Analizar la respuesta de la API y almacenarla en la variable responseData
+                        if (responseData.ok === false) {
+                            errors('Ocurrió un error al agregar la consulta: ' + json.msg);
+                        }
+                        if (responseData.ok === 200) {
+                        console.log(responseData);
+                        pick('Consulta agregada correctamente');
+                        modificarCantidadPila(responseData.alevinesEtry._id);            
+                        }else {
+                            responseData.errors.forEach(function (error) {
+                                console.log(error);
+                            });
+                            errors('Ocurrió un error al agregar la consulta: ' + json.errors[0].msg);
+                            if (responseData.ok === 400) {
+                                errors('Ocurrió un error al agregar la consulta');
+                                console.log(responseData);
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Error al hacer el registro del alevin:', error);
+                    }
+                };
+                // Comprobar si la respuesta de la API es exitosa (código de estado 200) y mostrar un mensaje de alerta correspondiente, además de restablecer el formulario. En caso contrario, mostrar un mensaje de error.
+
+
+                const modificarCantidadPila = async (entry_id) => {
+                    try {
+                        const response = await fetch(`http://localhost:8082/API/Pila/${pila_id}`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'authenticate': localStorage.getItem("authenticate"),
+                            },
+                            body: JSON.stringify({
+                                numLote: batch,
+                                cantidad: alevinCantidad,
+                                entry_id: entry_id
+                            })
+                        });
+                        const responseData = await response.json();
+                        // Analizar la respuesta de la API y almacenarla en la variable responseData
+                        if (responseData.ok === false) {
+                            errors('Ocurrió un error al agregar la consulta: ' + responseData.msg);
+                        }
+                        if (responseData.ok === 200) {
+                            // openPopup()
+                            // console.log(responseData.msg);
+                            pick("Registro de ingreso alevines agregado correctamente");
+                            // location.reload();
+                        }
+                        else {
+                            responseData.errors.forEach(function (error) {
+                                console.log(error);
+                            });
+                            errors('Ocurrió un error al agregar la consulta: ' + json.errors[0].msg);
+                            if (responseData.ok === 400) {
+                                errors('Ocurrió un error al agregar la consulta');
+                                console.log(responseData);
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Error al hacer el registro del alevin:', error);
+                    }
+                };
+
+
+                registrarAlevines()
+                // Comprobar si la respuesta de la API es exitosa (código de estado 200) y mostrar un mensaje de alerta correspondiente, además de restablecer el formulario. En caso contrario, mostrar un mensaje de error.
+            });
+        </script>
+     
+</body>
+
+</html>

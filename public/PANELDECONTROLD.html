@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Dashboard">
+  <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+  <title>PANEL DE CONTROL APROTILA</title>
+  <link href="../ima/aproColores.png" rel="icon">
+  <link href="../ima/aproColores.png" rel="apple-touch-icon">
+  <!-- Bootstrap core CSS -->
+  <link href="../assets/css/bootstrap.css" rel="stylesheet">
+  <!--external css-->
+  <link href="../assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="../assets/css/zabuto_calendar.css">
+  <link rel="stylesheet" type="text/css" href="../assets/js/gritter/css/jquery.gritter.css" />
+  <link rel="stylesheet" type="text/css" href="../assets/lineicons/styleicons.css">
+
+  <!-- Custom styles for this template -->
+  <link href="../assets/css/styles.css" rel="stylesheet">
+  <link href="../assets/css/style-responsive.css" rel="stylesheet">
+
+  <script src="../assets/js/chart-master/Chart.js"></script>
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  <style>
+    .current-day {
+      background-color: #0d6efd;
+      ;
+      color: white;
+    }
+
+    .dark-mode {
+      background-color: #111;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <section id="container">
+    <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header" style="background-color: #0d6efd;">
+      <div class="sidebar-toggle-box">
+        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"
+          style="color: white;"></div>
+      </div>
+      <!--logo start-->
+      <a href="PANELDECONTROLD.html" class="logo "><b>PANEL DE CONTROL</b></a>
+      <!--logo end-->
+      <div class="nav notify-row " id="top_menu">
+        <!--  notification start -->
+        <ul class="nav top-menu ">
+
+          <!-- settings end -->
+          <!-- inbox dropdown start-->
+
+          <!--  notification end -->
+      </div>
+      <div class="top-menu">
+        <ul class="nav pull-right top-menu">
+          <li><a class="logout" href="login.html" onclick="CerrarSesion()">CERRAR SESIÓN</a></li>
+        </ul>
+      </div>
+    </header>
+    <!--header end-->
+
+    <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+      <div id="sidebar" class="nav-collapse">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+
+          <p class="centered"><a href="profile.html"><img src="../assets/img/aproColores.png" class="img-circle"
+                width="80" height="60" style="background-color: white;"></a></p>
+          <span class="text" id="username" style="margin-left: 15%; color: white;"></span>
+
+          <li class="mt">
+            <a class="active" href="PANELDECONTROLD.html">
+              <i class="fa fa-dashboard"></i>
+              <span>Modulos</span>
+            </a>
+          </li>
+
+          <li class="sub-menu" id="admin">
+            <a href="javascript:;">
+              <i class="uil uil-user-check"></i>
+              <span>Admin</span>
+            </a>
+            <ul class="sub">
+              <li><a href="createUsers.html"><i class="uil uil-eye"></i>Ver Empleados</a></li>
+              <li><a href="createUsers.html"><i class="uil uil-user-plus"></i>Agregar usuarios</a></li>
+              <li><a href="pila.html"><i class="uil uil-plus"></i>Agregar Pilas</a></li>
+            </ul>
+          </li>
+          <li>
+            <div class="mode">
+              <a href="#" id="toggleModeButton">
+                <i class="uil uil-moon dark-mode-icon"></i>
+                <span class="mode-text text">Modo Oscuro</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
+    <!--sidebar end-->
+
+    <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+
+    <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+          <div class="col-lg-9 main-chart">
+            <div class="row mtbox">
+              <div class="col-md-2 col-sm-2  box0">
+                <div class="box1 miDiv" data-link="alevines.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 512 512">
+                    <path fill="#406f99"
+                      d="M512 256c0-16.54-14.27-46.76-45.61-74a207.06 207.06 0 0 0-60.28-36.12a3.15 3.15 0 0 0-3.93 1.56c-.15.29-.3.57-.47.86l-9.59 15.9a183.24 183.24 0 0 0 .07 183.78l.23.39l8.74 16a4 4 0 0 0 4.94 1.82C479.63 337.42 512 281.49 512 256Zm-93.92-.14a16 16 0 1 1 13.79-13.79a16 16 0 0 1-13.79 13.79Z" />
+                    <path fill="#406f99"
+                      d="M335.45 256a214.8 214.8 0 0 1 29.08-108l.12-.21l4.62-7.67a4 4 0 0 0-2.59-6a284.29 284.29 0 0 0-39.26-5.39a7.94 7.94 0 0 1-4.29-1.6c-19.28-14.66-57.5-40.3-96.46-46.89a16 16 0 0 0-18 20.18l10.62 37.17a4 4 0 0 1-2.42 4.84c-36.85 13.69-68.59 38.75-91.74 57.85a8 8 0 0 1-10.06.06q-4.72-3.75-9.69-7.39c-39.64-28.95-86.21-32.76-88.17-32.9a16 16 0 0 0-16.83 19.4c.42 1.93 9.19 40.69 31.7 71.61a8.09 8.09 0 0 1 0 9.55C9.57 291.52.8 330.29.38 332.22a16 16 0 0 0 16.83 19.4c2-.14 48.53-4 88.12-32.88q4.85-3.56 9.47-7.22a8 8 0 0 1 10.06.07c23.25 19.19 55.05 44.28 92 58a4 4 0 0 1 2.42 4.83l-10.66 37.18a16 16 0 0 0 18 20.18c17.16-2.9 51.88-12.86 96.05-46.83a8.15 8.15 0 0 1 4.36-1.65a287.36 287.36 0 0 0 39.22-5.3a4 4 0 0 0 2.69-5.83l-4.51-8.29A214.81 214.81 0 0 1 335.45 256Z" />
+                  </svg>
+                  <h5>Ingreso Alevines</h5>
+                </div>
+                <p>Acá se registrará el ingreso de los alevines</p>
+              </div>
+
+              <div class="col-md-2 col-sm-2 box0">
+                <div class="box1 miDiv" data-link="mortalidad.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 512 512">
+                    <path fill="#5379a4"
+                      d="M169.668 19.996c-2.215 12.053-4.136 23.328-6.494 34.383c-.792 3.765-.602 6.612 1.451 9.869c12.22 24 20.716 44.62 25.129 67.92c-10.542-16.6-23.174-30.653-38.92-41.734c-4.833 7.34-9.175 14.551-14.201 21.26c-2.17 2.883-2.524 4.811-.672 7.865c4.18 6.625 7.868 13.454 11.746 20.191c-8.302-2.336-15.946-5.587-23.697-8.469c-1.586-.601-4.08-.549-5.373.317c-9.422 6.83-18.7 13.912-28.903 21.568a3653.29 3653.29 0 0 0 21.842 21.033c-13.515-1.632-24.85-4.92-35.586-10.088c-2.35-1.031-5.325-2.405-7.49-1.74c-9.138 2.788-18.01 6.237-28.367 9.897c35.953 21.854 71.572 42.08 114.449 45.9c-3.9-12.252-9.78-25.358-11.545-36.676c-2.533-18.19 9.83-30.737 28.217-30.26c18.274 1.345 33.46 9.533 48.115 16.327c4.473-56.947-18.487-103.253-49.701-147.563zm197.295 124.049c-2.052 4.846-3.267 8.926-5.324 12.49c-2.683 4.343-2.372 7.655.437 11.877c8.015 11.837 14.055 24.674 18.098 39.205c-9.467-10.731-20.96-19.008-31.365-26.726c-2.764 4.043-4.95 7.516-7.409 10.675c-1.86 2.348-1.329 3.777.705 5.881c5.871 5.845 11.452 12.043 17.09 18.112c-16.846-4.587-20.398-5.147-27.504-7.288c-1.39-.345-3.556-.348-4.59.563c-3.01 2.37-5.695 5.348-7.947 7.531c17.218 9.988 34.728 18.956 50.967 29.834c16.166 10.871 31.087 23.653 46.63 35.627c5.516-25.255.96-49.666-8.78-73.346c-9.653-23.805-23.797-44.793-41.008-64.435zm-196.629 27.684c-10.583-.056-9.53 14.352-6.91 20.283c20.584 44.015 36.37 94.812 57.18 129.539c.687 1.122 3.296 1.986 4.73 1.748c7.811-1.418 15.378-3.174 23.473-4.863c1.328 6.17 2.649 12.045 3.974 18.27c-8.678 1.966-17.027 3.77-25.38 5.683c-.226.544-.374 1.067-.63 1.609a3706.649 3706.649 0 0 0 23.391 24.28c-16.885-1.994-32.688-8.052-47.31-17.337c-1.479-.966-3.379-2.34-4.82-2.074c-7.615 1.378-15.219 3.239-23.835 5.076c27.396 23.964 56.749 37.971 93.608 31.094c1.6 5.765 3.135 11.654 4.89 18.152c-7.46 1.095 87.217 117.433 147.383 82.157c22.092-12.953 52.966-43.747 51.756-68.844c-1.353-28.902-12.883-54.05-29.861-76.83c-17.76-23.749-37.931-45.297-61.125-64c-41.722-33.556-174.988-103.874-210.514-103.943zM331.111 278.8c-29.036-1.45-60.693-8.805-85.986-27.553c30.792 1.292 60.728 9.387 85.986 27.553zm16.721 46.076c-28.828-.96-59.946-8.198-85.28-26.291c30.224.652 60.451 8.331 85.28 26.291zm55.68 14.418l14.056 6.271l-9.843 22.227l22.568 9.428l-6.016 14.21l-22.785-9.445l-10.006 22.526l-14.14-6.323l9.931-22.22l-22.435-9.375l5.795-14.227l22.828 9.54zm-46.617 23.973c-31.227-1.695-57.169-4.272-81.266-20.348c25.856-1.434 61.403 7.784 81.266 20.348z" />
+                  </svg>
+                  <h5>Mortalidad</h5>
+                </div>
+                <p>Acá se registrará la mortalidad por pila</p>
+              </div>
+
+              <div class="col-md-2 col-sm-2 box0">
+                <div class="box1 miDiv" data-link="proveedores.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24">
+                    <path fill="#5379a4"
+                      d="M20 8h-3V4H1v13h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4M6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5s1.5.67 1.5 1.5s-.67 1.5-1.5 1.5M15 7h-2v7h-2V7H9v7H7V7H5v7H3V6h12v1m3 11.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5s1.5.67 1.5 1.5s-.67 1.5-1.5 1.5M17 12V9.5h2.5l1.96 2.5H17Z" />
+                  </svg>
+                  <h5>Proveedores</h5>
+                </div>
+                <p>Acá se registrarán los proveedores</p>
+              </div>
+
+              <div class="col-md-2 col-sm-2 box0">
+                <div class="box1 miDiv" data-link="registroProductos.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 16 16">
+                    <g fill="#5379a4">
+                      <path fill-rule="evenodd"
+                        d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                      <path
+                        d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                      <path
+                        d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                    </g>
+                  </svg>
+                  <h5>Registro productos</h5>
+                </div>
+                <p>Registrar productos</p>
+              </div>
+              <div class="col-md-2 col-sm-2 box0">
+                <div class="box1 miDiv" data-link="productos.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 1024 1024">
+                    <path fill="#5379a4"
+                      d="M799.344 960.288h-736v-800h449.6l64.704-62.336l-1.664-1.664H63.344c-35.344 0-64 28.656-64 64v800c0 35.344 28.656 64 64 64h736c35.344 0 64-28.656 64-64V491.632l-64 61.088v407.568zM974.224 41.44C945.344 13.76 913.473-.273 879.473-.273c-53.216 0-92.032 34.368-102.592 44.897c-14.976 14.784-439.168 438.353-439.168 438.353c-3.328 3.391-5.76 7.535-7.008 12.143c-11.488 42.448-69.072 230.992-69.648 232.864c-2.976 9.664-.32 20.193 6.8 27.217a26.641 26.641 0 0 0 18.913 7.84c2.752 0 5.52-.4 8.239-1.248c1.952-.656 196.496-63.569 228.512-73.12c4.224-1.248 8.048-3.536 11.216-6.624c20.208-19.936 410.112-403.792 441.664-436.384c32.624-33.664 48.847-68.657 48.223-104.097c-.591-35.008-17.616-68.704-50.4-100.128zm-43.791 159.679c-17.808 18.368-157.249 156.16-414.449 409.536l-19.68 19.408c-29.488 9.12-100.097 31.808-153.473 49.024c17.184-56.752 37.808-125.312 47.008-157.743C444.8 466.464 808.223 103.6 822.03 89.968c2.689-2.689 27.217-26.257 57.44-26.257c17.153 0 33.681 7.824 50.465 23.92c20.065 19.248 30.4 37.744 30.689 55.024c.32 17.792-9.84 37.456-30.191 58.464z" />
+                  </svg>
+                  <h5>Inventario</h5>
+                </div>
+                <p>Inventario actual</p>
+              </div>
+              <div class="col-md-2 col-sm-2 box0">
+                <div class="box1 miDiv" data-link="viewPool.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 32 32">
+                    <path fill="#5379a4"
+                      d="M12 4c-1.652 0-3 1.348-3 3v12.625l1-.719l1 .719V7c0-.55.45-1 1-1h1V4zm12 0c-1.652 0-3 1.348-3 3v1h-9v2h9v2h-9v2h9v2h-9v2h9v1.625l1-.719l1 .719V7c0-.55.45-1 1-1h1V4zM10 20.719l-.625.5S8.371 22 7.031 22c-1.34 0-2.406-.781-2.406-.781l-1.25 1.562S4.918 24 7.031 24c1.461 0 2.39-.484 2.969-.844c.582.356 1.559.844 3.031.844c1.461 0 2.39-.484 2.969-.844c.582.356 1.559.844 3.031.844c1.461 0 2.39-.484 2.969-.844c.582.356 1.559.844 3.031.844c2.114 0 3.594-1.219 3.594-1.219l-1.25-1.562S26.371 22 25.031 22c-1.34 0-2.406-.781-2.406-.781l-.625-.5l-.625.5S20.371 22 19.031 22c-1.34 0-2.406-.781-2.406-.781l-.625-.5l-.625.5S14.371 22 13.031 22c-1.34 0-2.406-.781-2.406-.781zm0 4l-.625.5S8.371 26 7.031 26c-1.34 0-2.406-.781-2.406-.781l-1.25 1.562S4.918 28 7.031 28c1.461 0 2.39-.484 2.969-.844c.582.356 1.559.844 3.031.844c1.461 0 2.39-.484 2.969-.844c.582.356 1.559.844 3.031.844c1.461 0 2.39-.484 2.969-.844c.582.356 1.559.844 3.031.844c2.114 0 3.594-1.219 3.594-1.219l-1.25-1.562S26.371 26 25.031 26c-1.34 0-2.406-.781-2.406-.781l-.625-.5l-.625.5S20.371 26 19.031 26c-1.34 0-2.406-.781-2.406-.781l-.625-.5l-.625.5S14.371 26 13.031 26c-1.34 0-2.406-.781-2.406-.781z" />
+                  </svg>
+                  <h5>Vista pilas</h5>
+                </div>
+                <p>Encargado del manteniento de las pilas</p>
+              </div>
+              <div class="col-md-2 col-sm-2 box0">
+                <div class="box1 miDiv" data-link="Muestreo.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 512 512">
+                    <path fill="#5379a4"
+                      d="M343.1 25.7c.5 31.23 14.5 58.24 38.1 88.1l4.1 5.2l-43.9 64H402l12.6-52.9l6.4-.7c18.7-1.9 41-10.2 60-19.9c7.1-3.7 13.6-7.5 19.6-11.3c-4.2 0-7.4.13-12.2 0c-22.4-.61-48.7-2.52-67.4-10.26c-20.4-8.51-42.6-27.79-60.7-45.05c-6.6-6.31-12.3-12.04-17.2-17.19zM74.93 26.9C55.54 74.74 74.44 140.8 98.75 183H119c-.8-2.4-1.2-4.9-1.2-7.5c0-13.7 11.3-25 25-25s25 11.3 25 25c0 2.6-.4 5.1-1.2 7.5h60.7c-16-37.2-41.8-82.7-82.8-116.96c5.1 19.17 12.2 37.76 23.8 55.56l-15.2 9.8c-17.2-26.6-25.3-54.39-30.9-81.78C108 40.49 92.3 32.73 74.93 26.9zm67.87 141.6c-4 0-7 3-7 7s3 7 7 7s7-3 7-7s-3-7-7-7zM89 201v30h196.5c1.7-5.8 3.3-11.7 5-17.6l17.4 4.8c-1.2 4.3-2.4 8.5-3.6 12.8H423v-30H89zm17.8 48l31.5 167.5c47.8-19.6 78.6-46.8 100.7-78.7c18.5-26.7 30.8-57 40.9-88.8H106.8zm192.1 0c-10.7 34.6-24 68.5-45.2 99.1c-24.4 35.1-59.5 65.5-112.1 86.4l9.9 52.5h209l44.7-238H298.9z" />
+                  </svg>
+                  <h5>Muestreo</h5>
+                </div>
+                <p>Se registrarán los muestreos</p>
+              </div>
+              <div class="col-md-2 col-sm-2 box0">
+                <div class="box1 miDiv" data-link="ventas.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 14 14">
+                    <g fill="none" stroke="#5379a4" stroke-linecap="round" stroke-linejoin="round">
+                      <path
+                        d="M13 6.94a5.64 5.64 0 0 1-3.13 5L7 13.5L4.13 12A5.64 5.64 0 0 1 1 6.94V1.5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1Z" />
+                      <path
+                        d="M5.5 8A1.5 1.5 0 0 0 7 9.5A1.4 1.4 0 0 0 8.5 8c0-1.5-3-1.5-3-3A1.4 1.4 0 0 1 7 3.5A1.5 1.5 0 0 1 8.5 5M7 3.5v-1m0 8v-1" />
+                    </g>
+                  </svg>
+                  <h5>Ventas</h5>
+                </div>
+                <p>Acá se registrarán las ventas</p>
+              </div>
+              <div class="col-md-2 col-sm-2 box0">
+                <div class="box1 miDiv" data-link="insumoPeces.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 2048 2048">
+                    <path fill="#5379a4"
+                      d="M896 1537V936L256 616v880l544 273l-31 127l-641-320V472L960 57l832 415v270q-70 11-128 45V616l-640 320v473l-128 128zM754 302l584 334l247-124l-625-313l-206 103zm206 523l240-120l-584-334l-281 141l625 313zm888 71q42 0 78 15t64 41t42 63t16 79q0 39-15 76t-43 65l-717 717l-377 94l94-377l717-716q29-29 65-43t76-14zm51 249q21-21 21-51q0-31-20-50t-52-20q-14 0-27 4t-23 15l-692 692l-34 135l135-34l692-691z" />
+                  </svg>
+                  <h5>Gasto insumos</h5>
+                </div>
+                <p>Se restarán los insumos del inventario</p>
+              </div>
+              <div class="col-md-2 col-sm-2 box0">
+                <div class="box1 miDiv" data-link="trazabilidad.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 16 16">
+                    <path fill="#5379a4" fill-rule="evenodd"
+                      d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z" />
+                  </svg>
+                  <h5>Trazabilidad</h5>
+                </div>
+                <p>Seguimiento a los peces</p>
+              </div>
+              <div class="col-md-2 col-sm-2 box0">
+                <div class="box1 miDiv" data-link="salesProduct.html">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24">
+                    <g fill="none" stroke="#5379a4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                      <path d="M3 7a4 4 0 1 0 8 0a4 4 0 1 0-8 0" />
+                      <path d="M7 3v4h4M9 17v4m8-7v7m-4-8v8m8-9v9" />
+                    </g>
+                  </svg>
+                  <h5>Productos ventas</h5>
+                </div>
+                <p>Ventas de productos</p>
+              </div>
+
+            </div><!-- /row mt -->
+          </div><!-- /col-lg-9 END SECTION MIDDLE -->
+
+          <!-- **********************************************************************************************************************************************************
+        RIGHT SIDEBAR CONTENT
+        *********************************************************************************************************************************************************** -->
+          <div class="col-lg-3 ds no-margin" style="padding: 0%; top: 5rem;">
+            <!--COMPLETED ACTIONS DONUTS CHART-->
+            <!-- Aquí iría el contenido del gráfico de donas si lo tienes -->
+
+            <!-- CALENDAR-->
+            <div id="calendar">
+              <div class="panel green-panel no-margin">
+                <div class="panel-body" style="background-color: #0d6efd;">
+                  <div id="date-popover" class="popover top"
+                    style="cursor: pointer; display: block; margin-left: 33%; margin-top: -50px; width: 175px;">
+                    <div class="arrow" style="background-color: black;"></div>
+                    <h3 class="popover-title" style="display: none;"></h3>
+                    <div id="date-popover-content" class="popover-content"></div>
+                  </div>
+                  <div id="my-calendar"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Aquí iría el contenido de otros elementos en la columna lateral derecha -->
+          </div><!-- /col-lg-3 ds -->
+        </div><!-- /row -->
+      </section>
+    </section>
+
+    <!--main content end-->
+    <!--footer start-->
+    <footer style="  position:fixed;
+      left:0px;
+      bottom:0px;
+      height:30px;
+      width:100%;
+      background:#0d6efd;color: white;">
+      <div class="text-center">
+        Aprotila
+        <a href="PANELDECONTROLD.html" class="go-top">
+          <i class="fa fa-angle-up"></i>
+        </a>
+      </div>
+    </footer>
+    <!--footer end-->
+  </section>
+
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script src="../assets/js/jquery.js"></script>
+  <script src="../assets/js/jquery-1.8.3.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script class="include" type="text/javascript" src="../assets/js/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="../assets/js/jquery.scrollTo.min.js"></script>
+  <script src="../assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+  <script src="../assets/js/jquery.sparkline.js"></script>
+
+
+  <!--common script for all pages-->
+  <script src="../assets/js/common-scripts.js"></script>
+
+  <script type="text/javascript" src="../assets/js/gritter/js/jquery.gritter.js"></script>
+  <script type="text/javascript" src="../assets/js/gritter-conf.js"></script>
+  <script src="../js/autenticacion.js"></script>
+  <!--script for this page-->
+  <script src="../assets/js/sparkline-chart.js"></script>
+  <script src="../assets/js/zabuto_calendar.js"></script>
+
+
+  <script>// Obtén todos los elementos de los divs con la clase "miDiv"
+    const divElements = document.querySelectorAll('.miDiv');
+
+    // Itera sobre cada div y agrega el evento de clic
+    divElements.forEach(function (divElement) {
+      divElement.addEventListener('click', function () {
+        // Obtén el enlace específico para cada div
+        const link = divElement.getAttribute('data-link');
+
+        // Cambia la ubicación del navegador al enlace correspondiente
+        window.location.href = link;
+      });
+    });</script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var unique_id = $.gritter.add({
+        // (string | mandatory) the heading of the notification
+        title: 'APROTILA!',
+        // (string | mandatory) the text inside the notification
+        text: 'Bienvenido al panel aprotila, pasa el cursor sobre el mensaje o pulsa para que aparezca el botón de cerrar"',
+        // (string | optional) the image to display on the left
+        image: '../assets/img/aproColores.png',
+        // (bool | optional) if you want it to fade out on its own or just sit there
+        sticky: true,
+        // (int | optional) the time you want it to be alive for before fading out
+        time: '',
+        // (string | optional) the class name you want to apply to that specific message
+        class_name: 'my-sticky-class'
+      });
+
+      // Cambiar el fondo de la imagen a blanco
+      $(".gritter-image").css("background-color", "white");
+
+      return false;
+    });
+  </script>
+
+  <script>
+
+    const user = obtenerUsuario()
+    document.getElementById('username').textContent = user.name
+
+    //si el rol no es administrador ocultamos el elemento admin del menu
+    if (user.rol != 'admin') {
+      document.getElementById('admin').style.display = 'none ';
+
+    }
+
+
+    document.querySelectorAll('.sub-menu').forEach(function (item) {
+      item.addEventListener('click', function (e) {
+        var submenu = this.querySelector('.sub');
+
+        // Verifica si el elemento tiene un submenú
+        if (submenu) {
+          e.preventDefault();
+          this.classList.toggle('active');
+        }
+      });
+    });
+
+    document.querySelectorAll('.sub a').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        // Obtén la URL del enlace
+        var href = this.getAttribute('href');
+
+        // Redirecciona a la URL
+        window.location.href = href;
+      });
+    });
+
+  </script>
+
+
+  <script type="application/javascript">
+    $(document).ready(function () {
+      $("#date-popover").popover({ html: true, trigger: "manual" });
+      $("#date-popover").hide();
+      $("#date-popover").click(function (e) {
+        $(this).hide();
+      });
+
+      $("#my-calendar").zabuto_calendar({
+        language: "es",
+        action: function () {
+          return myDateFunction(this.id, false);
+        },
+        action_nav: function () {
+          return myNavFunction(this.id);
+        },
+        ajax: {
+          url: "show_data.php?action=1",
+          modal: true
+        },
+        legend: [
+          { type: "text", label: "Evento especial", badge: "00" },
+          { type: "block", label: "Evento regular" }
+        ],
+        today: true, // Agrega esta línea para marcar el día actual
+      });
+    });
+
+    function myDateFunction(id, fromModal) {
+      if (fromModal) {
+        $("#" + id + "_modal").modal("hide");
+      }
+      var date = $("#" + id).data("date");
+
+      $("#my-calendar td").removeClass("current-day"); // Remove current-day class from all dates
+
+      $("#" + id).addClass("current-day"); // Add current-day class to the clicked date
+
+      var hasEvent = $("#" + id).data("hasEvent");
+      if (hasEvent && !fromModal) {
+        return false;
+      }
+
+      $("#date-popover").hide();
+      var options = {
+        type: "POST",
+        url: "show_data.php?action=2",
+        data: {
+          date: date
+        },
+        success: function (response) {
+          $("#date-popover-content").html(response);
+          $("#date-popover").show();
+        }
+      };
+      $.ajax(options);
+    }
+
+    function myNavFunction(id) {
+      $("#date-popover").hide();
+      var nav = $("#" + id).data("navigation");
+      var to = $("#" + id).data("to");
+      console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+    }
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var toggleModeButton = document.getElementById('toggleModeButton');
+      toggleModeButton.addEventListener('click', function () {
+        document.body.classList.toggle('dark-mode');
+      });
+    });
+  </script>
+
+</body>
+
+</html>

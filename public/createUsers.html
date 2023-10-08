@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../ima/aproColores.png" rel="icon">
+    <link href="../ima/aproColores.png" rel="apple-touch-icon">
+    <link rel="stylesheet" href="../css/container.css">
+    <link rel="stylesheet" href="../css/popup.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap5.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <title>Crear Usuario</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <style>
+        body.dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+
+        body.dark-mode nav {
+            background-color: #333;
+        }
+
+
+        body.dark-mode .nav-links li a {
+            color: #fff;
+        }
+
+        body.dark-mode .form label {
+            color: #fff;
+        }
+
+        body.dark-mode .form input,
+        body.dark-mode .form select {
+            background-color: #333;
+            color: #fff;
+        }
+
+        body.dark-mode .btn {
+            background-color: #555;
+            color: #fff;
+        }
+
+        body.dark-mode .table-striped thead th {
+            background-color: #555;
+            color: #fff;
+        }
+        .password-toggle {
+            top: 2rem;
+        font-size: 1.5rem; /* Ajusta el tamaño del icono */
+        cursor: pointer;
+    cursor: pointer;
+    margin-top: 7px;
+    margin-right: 1rem;
+    }
+    
+    /* Centra verticalmente el icono */
+    .position-relative {
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
+
+    </style>
+
+    <link rel="stylesheet" href="../css/popup.css">
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="logo">
+            <img src="../ima/aproColores.png" alt="Logo Image">
+        </div>
+        <button class="nav-toggle" aria-label="Abrir menú">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-menu">
+            <li class="nav-menu-item">
+                <a href="PANELDECONTROLD.html" class="nav-menu-link1 nav-link1"> <i class="uil uil-estate"></i>PANEL DE
+                    CONTROL</a>
+            </li>
+            <li class="nav-menu-item">
+                <a href="#" class="nav-menu-link1 nav-link1 toggle-mode"> <i class="uil uil-moon"></i>MODO OSCURO</a>
+            </li>
+            <li class="nav-menu-item">
+                <a href="#" class="nav-menu-link1 nav-link1 toggle-mode"> <i class="uil uil-signout"></i>CERRAR
+                    SESIÓN</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container-custom" style="margin-top: 10rem;">
+        <header style="text-align: center;">Crear Usuario</header>
+
+        <form id="createUsers_form">
+            <div class="form first">
+                <div class="details personal">
+                    <div class="fields">
+                        <div class="input-field">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" name="name" placeholder="202220222" required>
+                        </div>
+                        <div class="input-field">
+                            <label for="identification">Identificación</label>
+                            <input type="text" id="identification" name="identification" placeholder="202220222"
+                                required max="15">
+                        </div>
+                        <div class="input-field position-relative">
+                            <label for="password">Contraseña</label>
+                            <input type="password" id="password" name="password"
+                                   class="form-control"
+                                   placeholder="Contraseña" required>
+                            <!-- Agrega el ojito para ocultar/mostrar la contraseña -->
+                            <span class="password-toggle bi bi-eye-slash position-absolute end-0 top-50 translate-middle-y"
+                                  onclick="togglePasswordVisibility()"></span>
+                        </div>
+                        <div class="input-field">
+                            <label for="telephone">Telefono</label>
+                            <input type="number" id="telephone" name="telephone" min="8" required>
+                        </div>
+                        <div class="input-field">
+                            <label for="rol">Rol</label>
+                            <select class="formulario__campo" id="rol" name="rol" required>
+                                <option value="" disabled selected>--Seleccione el rol--</option>
+                                <option>admin</option>
+                                <option>employee</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <button type="submit" class="btn nextBtn">Registrar</button>
+                            <div class="popup" id="popup">
+                                <img id="popup-img" src="">
+                                <p style="color: white; margin-top: 10%;" id="alerta"></p>
+                                <button style="margin-left: 20%;" type="button" onclick="closePopup()">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+
+
+    <div class="contenedor2">
+        <!-- Tabla Alumnos -->
+        <table id="example" class="table" cellspacing="0" width="100%" style="margin: 0 auto;">
+            <thead>
+                <th style="background-color: #0d6efd; color: black;">Nombre</th>
+                <th style="background-color: #0d6efd; color: black;">Identificación</th>
+                <th style="background-color: #0d6efd; color: black;">Telefono</th>
+                <th style="background-color: #0d6efd; color: black;">Rol</th>
+                <th style="background-color: #0d6efd; color: black;">Acciones</th>
+            </thead>
+            <tbody data-table>
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- Modal para Editar   -->
+    <div id="modalUsers" class="modal fade" tabindex="-1" aria-labelledby="modalUsers" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Información</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="frmActualizaUsers">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="name" class="col-form-label">Nombre:</label>
+                            <input id="name_editar" name="name_editar" type="text" class="form-control" value="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="identification" class="col-form-label">Identificación:</label>
+                            <input id="identification_editar" name="identification_editar" type="text"
+                                class="form-control" value="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="telephone" class="col-form-label">Telefono:</label>
+                            <input id="telephone_editar" name="telephone_editar" type="text" class="form-control"
+                                value="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="rol">Rol</label>
+                            <select class="formulario__campo" id="rol_editar" name="rol_editar" required>
+                                <option value="" disabled selected>--Seleccione el rol--</option>
+                                <option>admin</option>
+                                <option>employee</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Datatables -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>html
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"> </script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/popup.js"></script>
+    <script src="../js/actualizarUsers.js"></script>
+    <script type="text/JavaScript" src="../js/autenticacion.js"></script>
+    <script>
+        const toggleModeButton = document.querySelector('.toggle-mode');
+        const body = document.querySelector('body');
+
+        toggleModeButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+        });
+    </script>
+ <script>
+    // Variable para controlar si la contraseña está oculta o visible
+    let passwordVisible = false;
+
+    // Función para cambiar el tipo de entrada del campo de contraseña
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById("password");
+      const passwordToggle = document.querySelector(".password-toggle");
+
+      passwordVisible = !passwordVisible;
+
+      if (passwordVisible) {
+        passwordInput.type = "text";
+        passwordToggle.classList.remove("bi-eye-slash");
+        passwordToggle.classList.add("bi-eye");
+      } else {
+        passwordInput.type = "password";
+        passwordToggle.classList.remove("bi-eye");
+        passwordToggle.classList.add("bi-eye-slash");
+      }
+    }
+
+  </script>
+    <script>
+        const navToggle = document.querySelector(".nav-toggle");
+        const navMenu = document.querySelector(".nav-menu");
+
+        navToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("nav-menu_visible");
+
+            if (navMenu.classList.contains("nav-menu_visible")) {
+                navToggle.setAttribute("aria-label", "Cerrar menú");
+            } else {
+                navToggle.setAttribute("aria-label", "Abrir menú");
+            }
+        });
+    </script>
+    <script>
+        const listaUsuarios = () => {
+            return fetch('http://localhost:8082/api/users', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authenticate': localStorage.getItem("authenticate"),
+                }
+            }).then((respuesta) => respuesta.json());
+        }
+
+        listaUsuarios().then((data) => {
+            console.log(data);
+            let user = data.users;
+            if (user) {
+                user.forEach(usuario => {
+                    const nuevaLinea = crearNuevaLinea(usuario._id, usuario.name, usuario.identification, usuario.telephone, usuario.rol, usuario.password);
+                    table.appendChild(nuevaLinea);
+                });
+                $('#example').DataTable({
+                    "language": {
+                        "autoWidth": true,
+                        "lengthMenu": "Mostrar _MENU_ registros por página",
+                        "zeroRecords": "No se encontraron resultados",
+                        "info": "Mostrando página _PAGE_ de _PAGES_",
+                        "infoEmpty": "No hay registros disponibles",
+                        "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                        "search": "Buscar:",
+                        "paginate": {
+                            "first": "Primero",
+                            "last": "Último",
+                            "next": "Siguiente",
+                            "previous": "Anterior"
+                        },
+                        "buttons": {
+                            "excel": "Exportar a Excel",
+                            "pdf": "Exportar a PDF",
+                            "print": "Imprimir"
+                        }
+                    },
+                    "dom": 'lBfrtip',
+                    "buttons": [
+                        'excel', 'pdf', 'print'
+                    ],
+                    "responsive": true
+                });
+            } else {
+                console.error("La propiedad 'entryalevines' es undefined en el objeto 'data'");
+            }
+        }).catch((error) => {
+            console.error(error);
+            let mensaje = 'Ocurrió un error';
+            errors(mensaje);
+        });
+
+        const crearNuevaLinea = (id, name, identification, telephone, rol) => {
+            const linea = document.createElement("tr");
+            linea.setAttribute("id", id);
+            const contenido = `
+        <td class="td" data-td>${name}</td>
+        <td>${identification}</td>
+        <td>${telephone}</td>
+        <td>${rol}</td>
+        <td>
+            <button class="btn btn-outline-danger bi bi-trash" onclick="return confirmacion('${id}')"></a>
+            <button class="btnEditar btn btn-outline-primary bi bi-pencil"></a>
+        </td>`;
+            linea.innerHTML = contenido;
+            return linea;
+        }
+
+        const table = document.querySelector("[data-table]");
+
+        const eliminarEntry = (id) => {
+            fetch(`http://localhost:8082/api/users/${id}`, {
+                method: "DELETE",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authenticate': localStorage.getItem("authenticate"),
+                }
+            })
+                .then(respuesta => {
+                    window.location.reload();
+                    console.log(respuesta);
+                })
+                .catch((error) => errors("Ocurrió un error"));
+        }
+
+        function confirmacion(id) {
+            let respuesta = confirm("Deseas eliminar este usuario?")
+            if (respuesta == true) {
+                eliminarEntry(id);
+            } else {
+                return false;
+            }
+        }
+
+    </script>
+
+    <script>
+        const UsersForm = document.getElementById('createUsers_form');
+
+        UsersForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const userName = document.getElementById('name').value;
+            const userIdentification = document.getElementById('identification').value;
+            const userPassword = document.getElementById('password').value;
+            const userTelephone = document.getElementById('telephone').value;
+            const userRol = document.getElementById('rol').value;
+
+            const response = await fetch('http://localhost:8082/api/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authenticate': localStorage.getItem("authenticate"),
+                },
+                body: JSON.stringify({
+                    name: userName,
+                    identification: userIdentification,
+                    password: userPassword,
+                    telephone: userTelephone,
+                    rol: userRol
+                })
+            });
+            if (response.ok) {
+                pick("Registro agregado correctamente");
+            } else {
+                const responseData = await response.json();
+                console.error(responseData);
+                errors('Ocurrió un error al agregar la consulta')
+            }
+        });
+    </script>
+
+</body>
+
+</html>

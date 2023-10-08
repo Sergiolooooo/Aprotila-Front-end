@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Producto Aprotila</title>
+    <link href="../ima/aproColores.png" rel="icon">
+    <link href="../ima/aproColores.png" rel="apple-touch-icon">
+    <link rel="stylesheet" href="../css/container.css">
+    <link rel="stylesheet" href="../css/popup.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../datatables/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="../datatables/DataTables-1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="logo">
+            <img src="../ima/aproColores.png" alt="Logo Image">
+        </div>
+        <button class="nav-toggle" aria-label="Abrir menú">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-menu">
+            <li class="nav-menu-item">
+                <a href="PANELDECONTROLD.html" class="nav-menu-link1 nav-link1"> <i class="uil uil-estate"></i>PANEL DE
+                    CONTROL</a>
+            </li>
+            <li class="nav-menu-item">
+                <a href="#" class="nav-menu-link1 nav-link1 toggle-mode"> <i class="uil uil-moon"></i>MODO OSCURO</a>
+            </li>
+            <li class="nav-menu-item">
+                <a href="#" onclick="CerrarSesion()" class="nav-menu-link1 nav-link1 toggle-mode"> <i class="uil uil-signout"></i>CERRAR
+                    SESIÓN</a>
+            </li>
+        </ul>
+    </nav>
+    
+
+    <div class="container-custom" style="margin-top: 10rem;">
+        <header style="text-align: center;">Registro Productos</header>
+
+        <form id="product_form">
+            <div class="form first">
+                <div class="details personal">
+
+                    <div class="fields">
+
+                        <div class="input-field">
+                            <label for="date">Fecha</label>
+                            <input type="datetime-local" id="date" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="provider">Proveedor</label>
+                            <select id="provider" name="provider" type="text" min="1" class="form-control" required>
+                                <option value="" disabled selected>--Seleccione el proveedor--</option>
+                            </select>
+
+                        </div>
+                        <div class="input-field">
+                            <label for="product">Producto</label>
+                            <input type="text" id="product" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="brandProduct">Marca del producto</label>
+                            <input type="text" id="brandProduct" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="amount">Cantidad Comprada</label>
+                            <input type="number" id="amount" min="1" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="unity">Unidad de medida</label>
+                            <input type="text" id="unity" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="expiration">Fecha vencimiento</label>
+                            <input type="date" id="expiration" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="price">Precio Total</label>
+                            <input type="number" id="price" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="state">Estado</label>
+                            <select id="state" name="state" type="text" min="1" class="form-control" required>
+                                <option value="" disabled selected>--Seleccione el estado--</option>
+                                <option>disponible</option>
+                                <option>No disponible</option>
+                            </select>
+
+                        </div>
+
+
+                        <div class="input-field">
+                            <br>
+                            <button type="submit" class="btn nextBtn">Registrar</button>
+                            <div class="popup" id="popup">
+                                <img id="popup-img" src="">
+                                <p style="color: white; margin-top: 10%;" id="alerta"></p>
+                                <button style="margin-left: 20%;" type="button" onclick="closePopup()">OK</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="../js/date.js"></script>
+
+    <div class="container my-5">
+  
+        <div class="row">
+            <table id="example" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%"
+                style="margin: 0 auto;">
+                <thead>
+                  
+                    <th style="background-color: #0d6efd; color: white;">Fecha</th>
+                    <th style="background-color: #0d6efd; color: white;width: 90px;">Proveedor</th>
+                    <th style="background-color: #0d6efd; color: white;width: 90px;">Producto</th>
+                    <th style="background-color: #0d6efd; color: white;">Marca</th>
+                    <th style="background-color: #0d6efd; color: white;">Unidad Medida</th>
+                    <th style="background-color: #0d6efd; color: white;width: 100px;">Cant.Inicial</th>
+                    <th style="background-color: #0d6efd; color: white;width: 100px;">F.Expiracion</th>
+                    <th style="background-color: #0d6efd; color: white;">Precio Total</th>
+                    <th style="background-color: #0d6efd; color: white;">Precio Unitario</th>
+                    <th style="background-color: #0d6efd; color: white;">Estado</th>
+                    <th style="background-color: #0d6efd; color: white;">Acción</th>
+                </thead>
+                <tbody data-table>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+       <!-- Modal para Editar   -->
+       <div id="modalProducto" class="modal fade" tabindex="-1" aria-labelledby="modalProducto" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Información</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="frmActualizarProducto">
+                    <div class="modal-body">
+
+                        <div class="mb-3">
+                            <label for="date_editar">Fecha:</label>
+                            <input type="datetime-local" id="date_editar" required disabled>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="product_editar" class="col-form-label">Producto:</label>
+                            <input type="text" id="product_editar" name="product_editar" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="provider_editar" class="col-form-label">Proveedor:</label>
+                            <select id="provider_editar" name="provider_editar" type="text" min="1" class="form-control"
+                                required>
+                                <option value="" selected>--Seleccione el proveedor--</option>
+                            </select>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="brandProduct_editar" class="col-form-label">Marca:</label>
+                            <input type="text" id="brandProduct_editar" name="brandProduct_editar" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="amount_editar" class="col-form-label">Cantidad:</label>
+                            <input id="amount_editar" name="amount_editar" type="number" class="form-control" min="1"
+                                value="" disabled>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="unity_editar" class="col-form-label">Unidad de Medida:</label>
+                            <input type="text" id="unity_editar" name="unity_editar" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="expiration_editar" class="col-form-label">Fecha expiracion:</label>
+                            <input type="date" id="expiration_editar" name="expiration_editar" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="price_editar" class="col-form-label">Precio:</label>
+                            <input type="number" id="price_editar" name="price_editar" class="form-control" min="1">
+                        </div>
+                        
+                        <div class="input-field">
+                            <label for="state_editar">Estado</label>
+                            <select id="state_editar" name="state_editar" type="text" min="1" class="form-control"
+                                required>
+                                <option value="" disabled selected>--Seleccione el estado--</option>
+                                <option>disponible</option>
+                                <option>No disponible</option>
+                            </select>
+
+                        </div>
+
+
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                        </div>
+
+                    </div>
+            </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modal para Editar Cantidad del producto   -->
+    <div id="modalCantidadProducto" class="modal fade" tabindex="-1" aria-labelledby="modalCantidadProducto"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="exampleModalLabel">Comprar Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="frmActualizarCantidad">
+                    <div class="modal-body">
+
+
+                        <div class="mb-3">
+                            <label for="product_aumentar" class="col-form-label">Producto:</label>
+                            <input type="text" id="product_aumentar" name="product_aumentar" class="form-control"
+                                disabled required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="price_current" class="col-form-label">Precio Actual:</label>
+                            <input id="price_current" name="price_current" type="number" class="form-control" min="1"
+                                max="1000000" value="" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="amount_aumentar" class="col-form-label">Cantidad:</label>
+                            <input id="amount_aumentar" name="amount_aumentar" type="number" class="form-control"
+                                min="1" max="1000000" value="" required>
+                        </div>
+
+
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Registrar</button>
+                        </div>
+
+                    </div>
+            </div>
+            </form>
+        </div>
+    </div>
+
+    </div>
+
+    <script type="text/JavaScript" src="../js/autenticacion.js"></script>
+    <script src="../JQuery/code.jquery.com_jquery-3.7.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"
+        integrity="sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../datatables/datatables.min.js"></script>
+    <script src="../datatables/Buttons-2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="../datatables/JSZip-2.5.0/jszip.min.js"></script>
+    <script src="../datatables/pdfmake-0.2.7/pdfmake.min.js"></script>
+    <script src="../datatables/pdfmake-0.2.7/vfs_fonts.js"></script>
+    <script src="../datatables/Buttons-2.3.6/js/buttons.html5.min.js"></script>
+    <script src="../js/optionProvider.js"></script>
+    <script src="../js/actProducto.js"></script>
+    <script src="../js/aumentarProducto.js"></script>
+    <script type="text/JavaScript" src="../js/autenticacion.js"></script>
+    <script src="../js/popup.js"></script>
+    <script>
+        const toggleModeButton = document.querySelector('.toggle-mode');
+        const body = document.querySelector('body');
+
+        toggleModeButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+        });
+    </script>
+
+    <script>
+        const navToggle = document.querySelector(".nav-toggle");
+        const navMenu = document.querySelector(".nav-menu");
+
+        navToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("nav-menu_visible");
+
+            if (navMenu.classList.contains("nav-menu_visible")) {
+                navToggle.setAttribute("aria-label", "Cerrar menú");
+            } else {
+                navToggle.setAttribute("aria-label", "Abrir menú");
+            }
+        });
+    </script>
+
+ 
+
+<script>
+    const listaProductos = () => {
+        return fetch('http://localhost:8082/API/Products', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'authenticate': localStorage.getItem("authenticate"),
+            }
+        }).then((respuesta) => respuesta.json());
+    }
+
+    listaProductos()
+        .then((data) => {
+            console.log(data);
+            let inventory = data.inventories;
+            if (inventory) {
+                inventory.forEach((inventoryItem) => {
+                    const products = inventoryItem.products;
+                    products.forEach((product) => {
+                        const nuevaLinea = crearNuevaLinea(
+                            inventoryItem._id,
+                            product._id,
+                            product.date,
+                            product.provider,
+                            product.product,
+                            product.brandProduct,
+                            product.unity,
+                            product.amountIncome,
+                            product.expiration,
+                            product.price,
+                            product.unitPrice,
+                            product.state,
+                        );
+                        table.appendChild(nuevaLinea);
+                    });
+                });
+
+                // Inicializar el DataTable después de agregar los datos a la tabla
+                $('#example').DataTable({
+                    "autoWidth": true,
+                    "language": {
+                        "lengthMenu": "Mostrar _MENU_ registros por página",
+                        "zeroRecords": "No se encontraron resultados",
+                        "info": "Mostrando página _PAGE_ de _PAGES_",
+                        "infoEmpty": "No hay registros disponibles",
+                        "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                        "search": "Buscar:",
+                        "paginate": {
+                            "first": "Primero",
+                            "last": "Último",
+                            "next": "Siguiente",
+                            "previous": "Anterior"
+                        },
+                        "buttons": {
+                            "excel": "Exportar a Excel",
+                            "pdf": "Exportar a PDF",
+                            "print": "Imprimir"
+                        }
+                    },
+                    "dom": 'lBfrtip',
+                    "buttons": [
+                        'excel', 'pdf', 'print'
+                    ],
+                    "responsive": true
+                });
+            } else {
+                console.error("La propiedad 'inventory' es undefined en el objeto 'data'");
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+            errors("Ocurrió un error");
+        });
+
+    const crearNuevaLinea = (id, product_id, date, provider,
+        product, brandProduct, unity, amountIncome, expiration, price, unitPrice, state) => {
+        const linea = document.createElement("tr");
+        // Se captura el id para llamarlo en el js para realixar el PUT
+        linea.setAttribute("id", id);
+        linea.setAttribute("product_id", product_id);
+        // linea.setAttribute("idProduct", id);
+
+        const contenido = `
+
+    <td>${date}</td>
+    <td>${provider}</td>
+    <td>${product}</td>
+    <td>${brandProduct}</td>
+    <td>${unity}</td>
+    <td>${amountIncome}</td>
+    <td>${expiration}</td>
+    <td>${price}</td>
+    <td>${unitPrice}</td>
+    <td>${state}</td>
+
+    <td>
+        <button class="btn btn-outline-danger bi bi-trash" id="btnDelete${id}"></a>
+
+        <button class="btnEditar btn btn-outline-primary bi bi-pencil"></a>
+        
+        <button class="btnAumentar btn btn-outline-primary">+</a>
+    </td>`;
+        linea.innerHTML = contenido;
+        const btnDelete = linea.querySelector('#btnDelete' + id);
+        btnDelete.addEventListener('click', () => {
+            eliminarEntry(id);
+        });
+
+        return linea;
+    }
+
+
+
+    const table = document.querySelector("[data-table]");
+
+    const eliminarEntry = (id) => {
+        fetch(`http://localhost:8082/API/Products/${id}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'authenticate': localStorage.getItem("authenticate"),
+            }
+        })
+            .then(respuesta => {
+                return respuesta.json(); // Devuelve otra promesa con los datos JSON
+            }).then(data => {
+                console.log(data);
+                if (data.ok) {
+                    console.log(data.message);
+                    // window.location.reload();
+                    pick("El proucto ha sido eliminado correctamente")
+                }else{
+                    warning("Usuario No autorizado");
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+                errors("Ocurrió un error durante la eliminación");
+            });
+
+    }
+
+
+
+
+
+const selectElementEditarProveedor = document.getElementById('provider_editar');
+
+fetch('http://localhost:8082/API/provider', {
+method: 'GET',
+headers: {
+'Content-Type': 'application/json',
+'authenticate': localStorage.getItem("authenticate"),
+}
+})
+.then(response => response.json())
+.then(data => {
+const mortalidad = data.provider; // Ajusta la propiedad 'mortalidad' según la estructura de los datos
+
+mortalidad.forEach(muerte => {
+
+  const optionEditar = document.createElement('option');
+  optionEditar.value = muerte.nameProvider;
+  optionEditar.textContent = muerte.nameProvider;
+  selectElementEditarProveedor.appendChild(optionEditar);
+});
+})
+.catch(error => {
+console.error('Error al obtener el Proveedor:', error);
+});
+
+</script>
+
+    <script>
+        const productForm = document.getElementById('product_form');
+
+        productForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const productAmount = document.getElementById('amount').value;
+            const productDate = document.getElementById('date').value;
+            const prodctProvider = document.getElementById('provider').value;
+            const product = document.getElementById('product').value;
+            const productBrandProduct = document.getElementById('brandProduct').value;
+            const productUnity = document.getElementById('unity').value;
+            const producExpiration = document.getElementById('expiration').value;
+            const producPrice = document.getElementById('price').value;
+            const producState = document.getElementById('state').value;
+
+            // Calcular el unitPrice
+            const unitPrice = (parseFloat(producPrice) / parseFloat(productAmount)).toFixed(2);
+
+            const response = await fetch('http://localhost:8082/API/Products', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authenticate': localStorage.getItem("authenticate"),
+                },
+                body: JSON.stringify({
+                    lastPrice: unitPrice,
+                    actualPrice: unitPrice,
+                    averagePrice: unitPrice,
+                    amount: productAmount,
+                    products: [{
+                        date: productDate,
+                        dateLastUpdate: null,
+                        provider: prodctProvider,
+                        product: product,
+                        brandProduct: productBrandProduct,
+                        amountIncome: productAmount,
+                        unity: productUnity,
+                        expiration: producExpiration,
+                        price: producPrice,
+                        unitPrice: unitPrice, // Agregar el unitPrice calculado
+                        state: producState,
+                    }]
+                })
+            });
+            // const responseData = await response.json();
+            // if (responseData.ok) {
+            //     console.log(responseData.message);
+            //     alert(responseData.message);
+            //     location.reload();
+
+            // } else {
+            //     console.error(responseData);
+            //     alert('Ocurrió un error al agregar la consulta');
+            // }
+            showAlert(response);
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+
+
+.bg-custom {
+  background: #000;
+}
+
+.bg-imagen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.bg-imagen #imagen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+  z-index: -1;
+}
+
+body {
+  background-image: url(../ima/bgLoginEd.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.bg-opacity-custom {
+  background-color: rgb(0, 0, 0);
+}
+
+.circular {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.circular-landscape {
+  display: inline-block;
+  position: relative;
+  width: 170px;
+  height: 170px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: auto 0;
+}
+
+.circular-landscape img {
+  width: auto;
+  height: 100%;
+  margin-left: -50px;
+}
+
+.i-sty {
+  font-size: 2rem;
+  color: #000; 
+}
+
+.spn-zize {
+  width: 3rem;
+  padding-top: 0.2rem;
+  border: solid 1px #000;
+  background-color: #b6b5b5;
+}
+.spn-1{
+  height: 3.6rem;
+}
+.spn-2{
+  height: 3.65rem;
+}
+.linea{
+  color: #0452b1;
+  border: solid 2px;
+}
+
+.password-toggle {
+  cursor: pointer;
+  font-size: 1.25rem;
+  padding: 0.25rem 0.5rem;
+  color: #6c757d; /* Color del icono */
+  z-index: 10;
+  pointer-events: auto;
+  background-color: transparent;
+  border: none;
+}
+
+.password-toggle:hover {
+  color: #0d6efd; /* Color del icono al pasar el mouse */
+}

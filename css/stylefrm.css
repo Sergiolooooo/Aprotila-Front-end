@@ -1,0 +1,72 @@
+body{
+    background-image: linear-gradient(15deg, #d6dded 0, #768eb5 50%, #00477f 100%);
+}
+
+.formulario{
+    background-color: var(--gris);
+    width: min(60rem, 100%);
+    margin: auto;
+    padding: 2rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    }
+    .formulario fieldset{
+    border: none;
+    }
+    .formulario legend{
+    color: var(--amarillo);
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+        }
+    .contenedor-inputs{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto 20rem;
+    column-gap: 1rem;
+    }
+    
+    .campos{
+    margin-bottom: 1rem;
+    }
+    
+    .campos label{
+        color: var(--blanco);
+        font-weight: bold;
+        display: block;
+        margin-bottom: .5rem;
+    }
+    
+    .campos textarea, input[type="text"],
+    input[type="email"]{
+        background-color: rgb(229, 242, 247);
+        width: 100%;
+        border: none;
+        padding: 1.5rem;
+        border-radius: .5rem;
+    }
+    
+    .boton{
+    background-color: var(--secundario);
+    margin-bottom: auto;
+    color: var(--blanco);
+    font-weight: bold;
+    
+    }
+    
+    .boton:hover{
+    cursor: pointer;
+    background-color: var(--amarillo);
+    color: #212121;
+    }
+    .campos textarea{
+    height: 15rem;
+    }
+    
+    .campos:nth-child(3), .campos:nth-child(4){
+    grid-column: 1 / 3;
+    }

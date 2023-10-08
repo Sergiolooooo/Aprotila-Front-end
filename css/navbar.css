@@ -1,0 +1,182 @@
+.header {
+  background-color: #222;
+  width: 100%;
+  top: 0;
+}
+.logo img {
+  height: 5rem;
+  width: 7rem;
+  border-radius: 50%;
+  background-color: #fff;
+}
+.login-button {
+  background-color: transparent;
+  border: 1.5px solid #f2f5f7;
+  border-radius: 2em;
+  padding: 0.6rem 0.8rem;
+  margin-left: 2vw;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.login-button:hover {
+  color: #131418;
+  background-color: #f2f5f7;
+  border: 1.5px solid #f2f5f7;
+  transition: all ease-in-out 350ms;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0769e9;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.nav-link1 {
+  color: white;
+  text-decoration: none;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  padding: 0 40px;
+  line-height: 80px;
+}
+
+.nav-menu {
+  display: flex;
+  margin-right: 40px;
+  list-style: none;
+}
+
+.nav-menu-item {
+  font-size: 18px;
+  margin: 0 10px;
+  line-height: 80px;
+  text-transform: uppercase;
+  width: max-content;
+}
+
+.nav-menu-link1 {
+  padding: 8px 12px;
+  border-radius: 3px;
+}
+
+.nav-menu-link1:hover,
+.nav-menu-link_active {
+  background-color: #e4eef5;
+  transition: 0.5s;
+}
+
+/* TOGGLE */
+.nav-toggle {
+  color: white;
+  background: none;
+  border: none;
+  font-size: 30px;
+  padding: 0 20px;
+  line-height: 60px;
+  cursor: pointer;
+
+  display: none;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  body {
+    padding-top: 70px;
+  }
+
+  .header {
+    height: 60px;
+  }
+
+  .logo {
+    font-size: 25px;
+    padding: 0 20px;
+    line-height: 60px;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    background-color: #0769e9;
+    position: fixed;
+    top: 60px;
+    width: 100%;
+    padding: 20px 0;
+    height: 15rem;
+    overflow-y: auto;
+
+    left: 100%;
+    transition: left 0.3s;
+  }
+
+  .nav-menu-item {
+    line-height: 70px;
+  }
+
+  .nav-menu-link1:hover,
+  .nav-menu-link_active {
+    background: none;
+    color: #83c5f7;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-menu_visible {
+    left: 0;
+  }
+
+  .nav-toggle:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+/*  Dark-mode navbar  */
+body.dark-mode {
+  background-color: #222;
+  color: #fff;
+}
+
+body.dark-mode nav {
+  background-color: #333;
+}
+
+body.dark-mode .nav-links li a {
+  color: #fff;
+}
+
+body.dark-mode .form label {
+  color: #393838;
+}
+
+body.dark-mode .form input,
+body.dark-mode .form select {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-mode .btn {
+  background-color: #555;
+  color: #fff;
+}
+body.dark-mode .table-striped thead th {
+  background-color: #555;
+  color: #fff;
+
+}
+body.dark-mode td {
+  background-color: #787878;
+  color: #fff;
+}

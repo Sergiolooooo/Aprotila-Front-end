@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas</title>
+    <link href="../ima/aproColores.png" rel="icon">
+    <link href="../ima/aproColores.png" rel="apple-touch-icon">
+    <link rel="stylesheet" href="../css/container.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../datatables/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="../datatables/DataTables-1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="../css/popup.css">
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="logo">
+            <img src="../ima/aproColores.png" alt="Logo Image">
+        </div>
+        <button class="nav-toggle" aria-label="Abrir menú">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-menu">
+            <li class="nav-menu-item">
+                <a href="PANELDECONTROLD.html" class="nav-menu-link1 nav-link1"> <i class="uil uil-estate"></i>PANEL DE
+                    CONTROL</a>
+            </li>
+            <li class="nav-menu-item">
+                <a href="#" class="nav-menu-link1 nav-link1 toggle-mode"> <i class="uil uil-moon"></i>MODO OSCURO</a>
+            </li>
+            <li class="nav-menu-item">
+                <a href="#" onclick="CerrarSesion()" class="nav-menu-link1 nav-link1 toggle-mode"> <i
+                        class="uil uil-signout"></i>CERRAR
+                    SESIÓN</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container-custom" style="margin-top: 10rem;">
+        <header style=" text-align: center;">Ventas</header>
+        <form id="sales_form">
+            <div class="form first">
+                <div class="details personal">
+                    <div class="fields">
+                        <div class="input-field">
+                            <label for="date">Fecha</label>
+                            <input type="datetime-local" id="date" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="employee">Encargado</label>
+                            <input type="text" id="employee" placeholder="202220222" required disabled>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="currentStack">Pila</label>
+                            <select class="formulario__campo" id="currentStack" required>
+                                <option value="" disabled selected>--Seleccione la pila--</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="typeProduct">Tipo de Producto</label>
+                            <select class="formulario__campo" id="typeProduct" required>
+                                <option value="" disabled selected>--Seleccione el tipo de producto--</option>
+                                <option value="Tilapia Entera">Tilapia Entera</option>
+                                <option value="Filete">Filete</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="amount">Cantidad Peces</label>
+                            <input type="number" id="amount" placeholder="" required min="1">
+                        </div>
+
+                        <div class="input-field">
+                            <label for="weight">Peso total(Kg)</label>
+                            <input type="number" id="weight" placeholder="" required min="0" oninput="calcularTotal()">
+                        </div>
+
+                        <div class="input-field">
+                            <label for="iva">Digite el IVA a aplicar</label>
+                            <input type="number" id="iva" min="0" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="price">Precio por (Kg)</label>
+                            <input type="number" id="price" min="0" required oninput="calcularTotal()">
+                        </div>
+
+                        <div class="input-field">
+                            <label for="subTotal">Subtotal</label>
+                            <input type="number" id="subTotal" min="0" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="total">Precio Total(IV)</label>
+                            <input type="number" id="total" min="0" required disabled>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="customer">Nombre Cliente</label>
+                            <input id="customer" placeholder="Sergio Lopez"></input>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="number">Numero de telefono del cliente</label>
+                            <input type="text" id="number" placeholder="22222222" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="pay">Tipo de pago</label>
+                            <select id="pay" name="pay" required>
+                                <option value="" disabled selected>Elija un tipo de pago</option>
+                                <option value="Sinpe">Sinpe</option>
+                                <option value="Transferencia">Transferencia</option>
+                                <option value="Tarjeta">Tarjeta</option>
+                                <option value="Efectivo">Efectivo</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <button type="submit" class="btn nextBtn">Registrar</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="popup" style="z-index: 10; top: 45%;" id="popup">
+        <img id="popup-img" src="">
+        <p style="color: white; margin-top: 10%;" id="alerta"></p>
+        <button style="margin: 0 auto;" type="button" onclick="closePopup()">OK</button>
+    </div>
+    </div>
+
+    <div class="contenedor2">
+
+        <!-- Tabla Alumnos -->
+        <table id="example" class="table" style="width: 100%;">
+            <thead>
+                <th style="background-color: #0d6efd; color: white;">Fecha</th>
+                <th style="background-color: #0d6efd; color: white;width: 90px;">Encargado</th>
+                <th style="background-color: #0d6efd; color: white;width: 80px;">Pila</th>
+                <th style="background-color: #0d6efd; color: white;">Peso (Kg)</th>
+                <th style="background-color: #0d6efd; color: white;width: 80px;">Cantidad Peces</th>
+                <th style="background-color: #0d6efd; color: white;width: 90px;">Tipo Producto</th>
+                <th style="background-color: #0d6efd; color: white;">Precio por kg</th>
+                <th style="background-color: #0d6efd; color: white;width: 80px;">Subtotal</th>
+                <th style="background-color: #0d6efd; color: white;">Precio Total(IVA)</th>
+                <th style="background-color: #0d6efd; color: white;">Cliente</th>
+                <th style="background-color: #0d6efd; color: white;width: 80px;">Telefono Cliente</th>
+                <th style="background-color: #0d6efd; color: white;">Tipo de Pago</th>
+                <th style="background-color: #0d6efd; color: white;width: 80px;">Acciones</th>
+            </thead>
+            <tbody data-table>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal actualizar -->
+    <div id="modalVentas" class="modal fade" tabindex="-1" aria-labelledby="modalVentas" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Información</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="frmActualizarVentas">
+                    <div class="modal-body">
+
+                        <div class="mb-3">
+                            <label for="customer_editar" class="col-form-label">Nombre Cliente</label>
+                            <input type="text" id="customer_editar" name="customer_editar" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="number_editar" class="col-form-label">Telefono del Cliente</label>
+                            <input type="text" id="number_editar" name="number_editar" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="pay_editar" class="col-form-label">Tipo de Pago</label>
+                            <select class="form-control" id="pay_editar">
+                                <option value="" disabled selected>Elija un tipo de pago</option>
+                                <option value="Sinpe">Sinpe</option>
+                                <option value="Transferencia">Transferencia</option>
+                                <option value="Tarjeta">Tarjeta</option>
+                                <option value="Efectivo">Efectivo</option>
+                            </select>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <script src="../js/autenticacion.js"></script>
+    <script src="../JQuery/code.jquery.com_jquery-3.7.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"
+        integrity="sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../datatables/datatables.min.js"></script>
+    <script src="../datatables/Buttons-2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="../datatables/JSZip-2.5.0/jszip.min.js"></script>
+    <script src="../datatables/pdfmake-0.2.7/pdfmake.min.js"></script>
+    <script src="../datatables/pdfmake-0.2.7/vfs_fonts.js"></script>
+    <script src="../datatables/Buttons-2.3.6/js/buttons.html5.min.js"></script>
+    <script src="../js/date.js"></script>
+    <script src="../js/actSales.js"></script>
+    <script type="text/JavaScript" src="../js/autenticacion.js"></script>
+    <script src="../js/popup.js"></script>
+    <script>
+        const user = obtenerUsuario()
+        document.getElementById('employee').value = user.name
+        document.getElementById('employee').setAttribute('user_id', user._id)
+
+
+        const toggleModeButton = document.querySelector('.toggle-mode');
+        const body = document.querySelector('body');
+
+        toggleModeButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+        });
+    </script>
+
+
+    <script>
+        // Función para calcular el total
+        function calcularTotal() {
+            var customIva = parseFloat(document.getElementById('iva').value);
+
+            // Si no se ha ingresado un valor en el campo de IVA, usar 0.13 por defecto
+            if (isNaN(customIva)) {
+                customIva = 0.13;
+            }
+
+            var weight = parseFloat(document.getElementById('weight').value);
+            var price = parseFloat(document.getElementById('price').value);
+            var total = weight * price;
+            var iv = total * (customIva / 100);
+            var totalConIV = total + iv;
+
+            document.getElementById('subTotal').value = total.toFixed(2);
+            document.getElementById('total').value = totalConIV.toFixed(2);
+        }
+
+        // Agregar evento input al campo de IVA
+        document.getElementById('iva').addEventListener('input', calcularTotal);
+    </script>
+
+    <script>
+        const selectElementStacks = document.getElementById('currentStack');
+        const selectElementEditarStacks = document.getElementById('currentStack_editar');
+        fetch('http://localhost:8082/API/Pila', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'authenticate': localStorage.getItem("authenticate"),
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                const pilas = data.mantePila;
+
+                pilas.forEach(pila => {
+                    if (pila.cantidad > 0) {
+                        const option = document.createElement('option');
+                        option.value = pila.numPila;
+                        option.textContent = pila.numPila;
+                        option.setAttribute('pila_id', pila._id);
+                        option.setAttribute('cantidad', pila.cantidad);
+                        selectElementStacks.appendChild(option);
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error al obtener las pilas:', error);
+            });
+
+    </script>
+
+    <script>
+        const navToggle = document.querySelector(".nav-toggle");
+        const navMenu = document.querySelector(".nav-menu");
+
+        navToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("nav-menu_visible");
+
+            if (navMenu.classList.contains("nav-menu_visible")) {
+                navToggle.setAttribute("aria-label", "Cerrar menú");
+            } else {
+                navToggle.setAttribute("aria-label", "Abrir menú");
+            }
+        });
+    </script>
+
+    <script>
+        const listaVentas = () => {
+            return fetch('http://localhost:8082/API/Sales', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authenticate': localStorage.getItem("authenticate"),
+                }
+            }).then((respuesta) => respuesta.json());
+        }
+
+        listaVentas()
+            .then((data) => {
+                console.log(data);
+                let ventas = data.sales;
+                if (ventas) {
+                    ventas.forEach(venta => {
+                        const nuevaLinea = crearNuevaLinea(venta._id, venta.date, venta.employee_id, venta.currentStack, venta.weight, venta.amount, venta.typeProduct, venta.price, venta.subTotal, venta.total, venta.customer, venta.number, venta.pay);
+                        table.appendChild(nuevaLinea);
+                    });
+
+                    // Inicializar el DataTable después de agregar los datos a la tabla
+                    $('#example').DataTable({
+                        "language": {
+                            "lengthMenu": "Mostrar _MENU_ registros por página",
+                            "zeroRecords": "No se encontraron resultados",
+                            "info": "Mostrando página _PAGE_ de _PAGES_",
+                            "infoEmpty": "No hay registros disponibles",
+                            "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                            "search": "Buscar:",
+                            "paginate": {
+                                "first": "Primero",
+                                "last": "Último",
+                                "next": "Siguiente",
+                                "previous": "Anterior"
+                            },
+                            "buttons": {
+                                "excel": "Exportar a Excel",
+                                "pdf": "Exportar a PDF",
+                                "print": "Imprimir"
+                            }
+                        },
+                        "dom": 'lBfrtip',
+                        "buttons": [
+                            'excel', 'pdf', 'print'
+                        ],
+                        "responsive": true
+                    });
+                } else {
+                    console.error("La propiedad 'sales' es undefined en el objeto 'data'");
+                }
+            }).catch((error) => {
+                console.error(error);
+                errors("Ocurrió un error");
+            });
+
+
+
+
+        const crearNuevaLinea = (id, date, employee_id, currentStack, weight, amount, typeProduct, price, subTotal, total, customer, number, pay) => {
+            const linea = document.createElement("tr");
+            linea.setAttribute("id", id);
+            const contenido = `
+        <td class="td" data-td>${date}</td>
+        <td>${employee_id}</td>
+        <td>${currentStack}</td>
+        <td>${weight}</td>
+        <td>${amount}</td>
+        <td>${typeProduct}</td>
+        <td>${price}</td>
+        <td>${subTotal}</td>
+        <td>${total}</td>
+        <td>${customer}</td>
+        <td>${number}</td>
+        <td>${pay}</td>
+        <td>
+            <button class="btnEditar btn btn-outline-primary bi bi-pencil"></a>
+        </td>`;
+            linea.innerHTML = contenido;
+            const btn = linea.querySelector("button");
+            btn.addEventListener('click', () => {
+                const id = btn.id;
+                console.log(id);
+                // eliminarEntry(id);
+            });
+            return linea;
+        }
+
+        const table = document.querySelector("[data-table]");
+
+        const eliminarEntry = (id) => {
+            fetch(`http://localhost:8082/API/saleProduct/${id}`, {
+                method: "DELETE",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authenticate': localStorage.getItem("authenticate"),
+                }
+            })
+                .then(respuesta => {
+                    window.location.reload();
+                    console.log(respuesta);
+                })
+                .catch((error) => errors("Ocurrió un error"));
+        }
+
+    </script>
+
+
+
+    <script>
+        const ventasForm = document.getElementById('sales_form');
+
+        ventasForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const ventasDate = document.getElementById('date').value;
+            const ventasEmployee = document.getElementById('employee').value;
+            const ventasPilas = document.getElementById('currentStack').value;
+            const ventasWeight = document.getElementById('weight').value;
+            const ventasAmount = document.getElementById('amount').value;
+            const ventasType = document.getElementById('typeProduct').value;
+            const ventasPrice = document.getElementById('price').value;
+            const ventassubTotal = document.getElementById('subTotal').value;
+            const ventasTotal = document.getElementById('total').value;
+            const ventasCustomer = document.getElementById('customer').value;
+            const ventasNumber = document.getElementById('number').value;
+            const ventasPay = document.getElementById('pay').value;
+
+            const response = await fetch('http://localhost:8082/API/Sales', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authenticate': localStorage.getItem("authenticate"),
+                },
+                body: JSON.stringify({
+                    date: ventasDate,
+                    employee_id: ventasEmployee,
+                    currentStack: ventasPilas,
+                    weight: ventasWeight,
+                    amount: ventasAmount,
+                    typeProduct: ventasType,
+                    price: ventasPrice,
+                    subTotal: ventassubTotal,
+                    total: ventasTotal,
+                    customer: ventasCustomer,
+                    number: ventasNumber,
+                    pay: ventasPay
+                })
+            });
+
+
+            if (response.ok) {
+                pick("Registro de venta agregado correctamente");
+            } else {
+                const responseData = await response.json();
+                console.error(responseData);
+                errors('Ocurrió un error al agregar la consulta')
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
